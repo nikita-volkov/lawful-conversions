@@ -17,6 +17,10 @@ instance IsSome Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
 instance IsSome Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
   to = IsomorphismClass.TextCompat.Array.fromByteArray
 
+instance IsAll Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
+
+instance IsAll Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray
+
 instance Is Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
 
 instance Is Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray

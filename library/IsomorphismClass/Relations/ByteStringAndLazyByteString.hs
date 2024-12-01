@@ -12,6 +12,10 @@ instance IsSome ByteString Data.ByteString.Lazy.ByteString where
 instance IsSome Data.ByteString.Lazy.ByteString ByteString where
   to = Data.ByteString.Lazy.fromStrict
 
+instance IsAll ByteString Data.ByteString.Lazy.ByteString
+
+instance IsAll Data.ByteString.Lazy.ByteString ByteString
+
 instance Is ByteString Data.ByteString.Lazy.ByteString
 
 instance Is Data.ByteString.Lazy.ByteString ByteString

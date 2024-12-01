@@ -15,6 +15,10 @@ instance IsSome Data.ByteString.Short.ShortByteString Data.ByteString.Builder.Bu
   to = Data.ByteString.Short.toShort . Data.ByteString.Lazy.toStrict . Data.ByteString.Builder.toLazyByteString
   maybeFrom = Just . Data.ByteString.Builder.shortByteString
 
+instance IsAll Data.ByteString.Builder.Builder Data.ByteString.Short.ShortByteString
+
+instance IsAll Data.ByteString.Short.ShortByteString Data.ByteString.Builder.Builder
+
 instance Is Data.ByteString.Builder.Builder Data.ByteString.Short.ShortByteString
 
 instance Is Data.ByteString.Short.ShortByteString Data.ByteString.Builder.Builder

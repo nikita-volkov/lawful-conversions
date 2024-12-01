@@ -15,6 +15,10 @@ instance IsSome Data.Primitive.ByteArray.ByteArray ByteString where
 instance IsSome ByteString Data.Primitive.ByteArray.ByteArray where
   to = to . to @Data.ByteString.Short.ShortByteString
 
+instance IsAll Data.Primitive.ByteArray.ByteArray ByteString
+
+instance IsAll ByteString Data.Primitive.ByteArray.ByteArray
+
 instance Is Data.Primitive.ByteArray.ByteArray ByteString
 
 instance Is ByteString Data.Primitive.ByteArray.ByteArray

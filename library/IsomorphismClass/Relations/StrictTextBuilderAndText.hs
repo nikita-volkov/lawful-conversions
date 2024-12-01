@@ -15,6 +15,10 @@ instance IsSome Text Data.Text.Encoding.StrictBuilder where
 instance IsSome Data.Text.Encoding.StrictBuilder Text where
   to = Data.Text.Encoding.textToStrictBuilder
 
+instance IsAll Text Data.Text.Encoding.StrictBuilder
+
+instance IsAll Data.Text.Encoding.StrictBuilder Text
+
 instance Is Text Data.Text.Encoding.StrictBuilder
 
 instance Is Data.Text.Encoding.StrictBuilder Text

@@ -15,6 +15,10 @@ instance IsSome Text Data.Text.Lazy.Builder.Builder where
   to = Data.Text.Lazy.toStrict . Data.Text.Lazy.Builder.toLazyText
   maybeFrom = Just . Data.Text.Lazy.Builder.fromText
 
+instance IsAll Data.Text.Lazy.Builder.Builder Text
+
+instance IsAll Text Data.Text.Lazy.Builder.Builder
+
 instance Is Data.Text.Lazy.Builder.Builder Text
 
 instance Is Text Data.Text.Lazy.Builder.Builder

@@ -23,6 +23,10 @@ instance IsSome Data.Text.Array.Array Data.ByteString.Builder.Builder where
       . Data.ByteString.Lazy.toStrict
       . Data.ByteString.Builder.toLazyByteString
 
+instance IsAll Data.Text.Array.Array Data.ByteString.Builder.Builder
+
+instance IsAll Data.ByteString.Builder.Builder Data.Text.Array.Array
+
 instance Is Data.Text.Array.Array Data.ByteString.Builder.Builder
 
 instance Is Data.ByteString.Builder.Builder Data.Text.Array.Array

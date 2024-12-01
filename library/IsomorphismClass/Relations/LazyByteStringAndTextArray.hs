@@ -24,6 +24,10 @@ instance IsSome Data.Text.Array.Array Data.ByteString.Lazy.ByteString where
       . Data.ByteString.Short.toShort
       . Data.ByteString.Lazy.toStrict
 
+instance IsAll Data.Text.Array.Array Data.ByteString.Lazy.ByteString
+
+instance IsAll Data.ByteString.Lazy.ByteString Data.Text.Array.Array
+
 instance Is Data.Text.Array.Array Data.ByteString.Lazy.ByteString
 
 instance Is Data.ByteString.Lazy.ByteString Data.Text.Array.Array

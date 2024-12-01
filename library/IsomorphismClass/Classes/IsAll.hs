@@ -15,3 +15,5 @@ class (IsSome b a) => IsAll a b where
   -- Requires the presence of 'IsSome' in reverse direction.
   default onto :: (IsSome a b) => b -> a
   onto = to
+
+instance IsAll a a

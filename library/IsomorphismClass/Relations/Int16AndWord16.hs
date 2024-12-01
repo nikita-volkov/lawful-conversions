@@ -11,6 +11,10 @@ instance IsSome Int16 Word16 where
 instance IsSome Word16 Int16 where
   to = fromIntegral
 
+instance IsAll Int16 Word16
+
+instance IsAll Word16 Int16
+
 instance Is Int16 Word16
 
 instance Is Word16 Int16

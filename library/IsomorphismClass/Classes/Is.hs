@@ -1,5 +1,6 @@
 module IsomorphismClass.Classes.Is where
 
+import IsomorphismClass.Classes.IsAll
 import IsomorphismClass.Classes.IsSome
 
 -- | Bidirectional conversion between two types with no loss of information.
@@ -32,7 +33,7 @@ import IsomorphismClass.Classes.IsSome
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'IsomorphismClass.isLawsProperties'.
-class (IsSome a b, Is b a) => Is a b
+class (IsAll b a, Is b a) => Is a b
 
 -- | Any type is isomorphic to itself.
 instance Is a a

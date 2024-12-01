@@ -34,6 +34,10 @@ instance IsSome sub (ViaIsSome sup sub) where
 instance IsSome (ViaIsSome sup sub) sub where
   to = coerce
 
+instance IsAll sub (ViaIsSome sup sub)
+
+instance IsAll (ViaIsSome sup sub) sub
+
 instance Is sub (ViaIsSome sup sub)
 
 instance Is (ViaIsSome sup sub) sub

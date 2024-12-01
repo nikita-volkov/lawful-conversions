@@ -11,6 +11,10 @@ instance IsSome Int Word where
 instance IsSome Word Int where
   to = fromIntegral
 
+instance IsAll Int Word
+
+instance IsAll Word Int
+
 instance Is Int Word
 
 instance Is Word Int

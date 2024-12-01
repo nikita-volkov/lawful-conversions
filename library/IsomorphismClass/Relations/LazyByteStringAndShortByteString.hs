@@ -13,6 +13,10 @@ instance IsSome Data.ByteString.Lazy.ByteString Data.ByteString.Short.ShortByteS
 instance IsSome Data.ByteString.Short.ShortByteString Data.ByteString.Lazy.ByteString where
   to = Data.ByteString.Short.toShort . Data.ByteString.Lazy.toStrict
 
+instance IsAll Data.ByteString.Lazy.ByteString Data.ByteString.Short.ShortByteString
+
+instance IsAll Data.ByteString.Short.ShortByteString Data.ByteString.Lazy.ByteString
+
 instance Is Data.ByteString.Lazy.ByteString Data.ByteString.Short.ShortByteString
 
 instance Is Data.ByteString.Short.ShortByteString Data.ByteString.Lazy.ByteString

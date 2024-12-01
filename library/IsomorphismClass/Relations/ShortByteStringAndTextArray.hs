@@ -17,6 +17,10 @@ instance IsSome Data.ByteString.Short.ShortByteString Data.Text.Array.Array wher
 instance IsSome Data.Text.Array.Array Data.ByteString.Short.ShortByteString where
   to = IsomorphismClass.TextCompat.Array.fromShortByteString
 
+instance IsAll Data.ByteString.Short.ShortByteString Data.Text.Array.Array
+
+instance IsAll Data.Text.Array.Array Data.ByteString.Short.ShortByteString
+
 instance Is Data.ByteString.Short.ShortByteString Data.Text.Array.Array
 
 instance Is Data.Text.Array.Array Data.ByteString.Short.ShortByteString

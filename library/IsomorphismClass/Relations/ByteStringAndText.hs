@@ -11,5 +11,5 @@ instance IsSome ByteString Text where
   to = Data.Text.Encoding.encodeUtf8
   maybeFrom = either (const Nothing) Just . Data.Text.Encoding.decodeUtf8'
 
-instance IsInjectionOf ByteString Text where
-  lenientlyFrom = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode
+instance SurjectsTo Text ByteString where
+  onto = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode

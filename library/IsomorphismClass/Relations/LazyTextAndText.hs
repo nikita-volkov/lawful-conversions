@@ -12,9 +12,9 @@ instance IsSome Data.Text.Lazy.Text Text where
 instance IsSome Text Data.Text.Lazy.Text where
   to = Data.Text.Lazy.toStrict
 
-instance IsInjectionOf Data.Text.Lazy.Text Text
+instance SurjectsTo Data.Text.Lazy.Text Text
 
-instance IsInjectionOf Text Data.Text.Lazy.Text
+instance SurjectsTo Text Data.Text.Lazy.Text
 
 instance Is Data.Text.Lazy.Text Text
 

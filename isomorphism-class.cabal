@@ -38,8 +38,8 @@ library
   other-modules:
     IsomorphismClass.Classes
     IsomorphismClass.Classes.Is
-    IsomorphismClass.Classes.IsInjectionOf
     IsomorphismClass.Classes.IsSome
+    IsomorphismClass.Classes.SurjectsTo
     IsomorphismClass.Laws
     IsomorphismClass.Optics
     IsomorphismClass.Prelude

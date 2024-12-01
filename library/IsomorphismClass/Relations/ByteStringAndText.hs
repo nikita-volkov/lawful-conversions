@@ -12,5 +12,4 @@ instance IsSome ByteString Text where
   maybeFrom = either (const Nothing) Just . Data.Text.Encoding.decodeUtf8'
 
 instance IsInjectionOf ByteString Text where
-  onto = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode
-  into = Data.Text.Encoding.encodeUtf8
+  lenientlyFrom = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode

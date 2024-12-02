@@ -6,7 +6,7 @@ import qualified Data.ByteString.Short as ByteStringShort
 import qualified Data.Primitive.ByteArray as PrimitiveByteArray
 import qualified Data.Text.Lazy as TextLazy
 import qualified Data.Text.Lazy.Builder as TextLazyBuilder
-import IsomorphismClass
+import LawfulConversions
 import Rebase.Prelude
 import Test.ExtraInstances ()
 import Test.Tasty

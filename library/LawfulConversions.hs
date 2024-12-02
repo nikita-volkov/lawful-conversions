@@ -1,5 +1,3 @@
-{-# LANGUAGE CPP #-}
-
 -- |
 -- Lawful solution to the conversion problem.
 --
@@ -64,7 +62,7 @@
 -- The types are self-evident:
 --
 -- > > :t to @String
--- > to @String :: Is String b => b -> String
+-- > to @String :: IsSome String b => b -> String
 --
 -- > > :t from @Text
 -- > from @Text :: Is Text b => Text -> b

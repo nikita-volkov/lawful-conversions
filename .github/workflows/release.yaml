@@ -30,4 +30,3 @@ jobs:
     secrets: inherit
     with:
       prefix-tag-with-v: false
-      docs: true

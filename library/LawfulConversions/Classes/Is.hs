@@ -22,7 +22,7 @@ import LawfulConversions.Classes.IsSome
 --     and then converting from /B/ to /A/ produces a value that is identical
 --     to the original.
 --
--- For testing whether your instances conform to these laws use 'LawfulConversions.isLawsProperties'.
+-- For testing whether your instances conform to these laws use 'LawfulConversions.isProperties'.
 --
 -- === Instance Definition
 --
@@ -31,7 +31,7 @@ import LawfulConversions.Classes.IsSome
 --
 -- === Testing
 --
--- For testing whether your instances conform to these laws use 'LawfulConversions.isLawsProperties'.
+-- For testing whether your instances conform to these laws use 'LawfulConversions.isProperties'.
 class (IsSome a b, Is b a) => Is a b
 
 -- | Any type is isomorphic to itself.

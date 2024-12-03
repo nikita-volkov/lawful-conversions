@@ -91,7 +91,6 @@ library
     LawfulConversions.Relations.TextArrayAndWord8List
     LawfulConversions.TextCompat.Array
 
-  build-tool-depends: autoexporter:autoexporter >=1.1.19 && <3
   build-depends:
     QuickCheck >=2.13 && <3,
     base >=4.12 && <5,

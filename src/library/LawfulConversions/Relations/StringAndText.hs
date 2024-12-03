@@ -16,4 +16,4 @@ instance IsSome String Text where
           else Nothing
 
 instance IsMany String Text where
-  from = fromString
+  from = Text.pack

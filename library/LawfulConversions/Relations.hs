@@ -1,45 +1,45 @@
-module LawfulConversions.Relations (module Exports) where
+module LawfulConversions.Relations () where
 
-import LawfulConversions.Relations.BoxedVectorAndList as Exports
-import LawfulConversions.Relations.BoxedVectorAndSeq as Exports
-import LawfulConversions.Relations.ByteArrayAndByteString as Exports
-import LawfulConversions.Relations.ByteArrayAndLazyByteString as Exports
-import LawfulConversions.Relations.ByteArrayAndLazyByteStringBuilder as Exports
-import LawfulConversions.Relations.ByteArrayAndShortByteString as Exports
-import LawfulConversions.Relations.ByteArrayAndTextArray as Exports
-import LawfulConversions.Relations.ByteArrayAndWord8List as Exports
-import LawfulConversions.Relations.ByteStringAndLazyByteString as Exports
-import LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder as Exports
-import LawfulConversions.Relations.ByteStringAndShortByteString as Exports
-import LawfulConversions.Relations.ByteStringAndText as Exports
-import LawfulConversions.Relations.ByteStringAndTextArray as Exports
-import LawfulConversions.Relations.ByteStringAndWord8List as Exports
-import LawfulConversions.Relations.Int16AndWord16 as Exports
-import LawfulConversions.Relations.Int32AndWord32 as Exports
-import LawfulConversions.Relations.Int64AndWord64 as Exports
-import LawfulConversions.Relations.Int8AndWord8 as Exports
-import LawfulConversions.Relations.IntAndWord as Exports
-import LawfulConversions.Relations.IntMapAndMapOfInt as Exports
-import LawfulConversions.Relations.IntSetAndSetOfInt as Exports
-import LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder as Exports
-import LawfulConversions.Relations.LazyByteStringAndLazyText as Exports
-import LawfulConversions.Relations.LazyByteStringAndShortByteString as Exports
-import LawfulConversions.Relations.LazyByteStringAndTextArray as Exports
-import LawfulConversions.Relations.LazyByteStringAndWord8List as Exports
-import LawfulConversions.Relations.LazyByteStringBuilderAndShortByteString as Exports
-import LawfulConversions.Relations.LazyByteStringBuilderAndTextArray as Exports
-import LawfulConversions.Relations.LazyByteStringBuilderAndWord8List as Exports
-import LawfulConversions.Relations.LazyTextAndLazyTextBuilder as Exports
-import LawfulConversions.Relations.LazyTextAndStrictTextBuilder as Exports
-import LawfulConversions.Relations.LazyTextAndString as Exports
-import LawfulConversions.Relations.LazyTextAndText as Exports
-import LawfulConversions.Relations.LazyTextBuilderAndStrictTextBuilder as Exports
-import LawfulConversions.Relations.LazyTextBuilderAndString as Exports
-import LawfulConversions.Relations.LazyTextBuilderAndText as Exports
-import LawfulConversions.Relations.ListAndSeq as Exports
-import LawfulConversions.Relations.ShortByteStringAndTextArray as Exports
-import LawfulConversions.Relations.ShortByteStringAndWord8List as Exports
-import LawfulConversions.Relations.StrictTextBuilderAndString as Exports
-import LawfulConversions.Relations.StrictTextBuilderAndText as Exports
-import LawfulConversions.Relations.StringAndText as Exports
-import LawfulConversions.Relations.TextArrayAndWord8List as Exports
+import LawfulConversions.Relations.BoxedVectorAndList ()
+import LawfulConversions.Relations.BoxedVectorAndSeq ()
+import LawfulConversions.Relations.ByteArrayAndByteString ()
+import LawfulConversions.Relations.ByteArrayAndLazyByteString ()
+import LawfulConversions.Relations.ByteArrayAndLazyByteStringBuilder ()
+import LawfulConversions.Relations.ByteArrayAndShortByteString ()
+import LawfulConversions.Relations.ByteArrayAndTextArray ()
+import LawfulConversions.Relations.ByteArrayAndWord8List ()
+import LawfulConversions.Relations.ByteStringAndLazyByteString ()
+import LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder ()
+import LawfulConversions.Relations.ByteStringAndShortByteString ()
+import LawfulConversions.Relations.ByteStringAndText ()
+import LawfulConversions.Relations.ByteStringAndTextArray ()
+import LawfulConversions.Relations.ByteStringAndWord8List ()
+import LawfulConversions.Relations.Int16AndWord16 ()
+import LawfulConversions.Relations.Int32AndWord32 ()
+import LawfulConversions.Relations.Int64AndWord64 ()
+import LawfulConversions.Relations.Int8AndWord8 ()
+import LawfulConversions.Relations.IntAndWord ()
+import LawfulConversions.Relations.IntMapAndMapOfInt ()
+import LawfulConversions.Relations.IntSetAndSetOfInt ()
+import LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder ()
+import LawfulConversions.Relations.LazyByteStringAndLazyText ()
+import LawfulConversions.Relations.LazyByteStringAndShortByteString ()
+import LawfulConversions.Relations.LazyByteStringAndTextArray ()
+import LawfulConversions.Relations.LazyByteStringAndWord8List ()
+import LawfulConversions.Relations.LazyByteStringBuilderAndShortByteString ()
+import LawfulConversions.Relations.LazyByteStringBuilderAndTextArray ()
+import LawfulConversions.Relations.LazyByteStringBuilderAndWord8List ()
+import LawfulConversions.Relations.LazyTextAndLazyTextBuilder ()
+import LawfulConversions.Relations.LazyTextAndStrictTextBuilder ()
+import LawfulConversions.Relations.LazyTextAndString ()
+import LawfulConversions.Relations.LazyTextAndText ()
+import LawfulConversions.Relations.LazyTextBuilderAndStrictTextBuilder ()
+import LawfulConversions.Relations.LazyTextBuilderAndString ()
+import LawfulConversions.Relations.LazyTextBuilderAndText ()
+import LawfulConversions.Relations.ListAndSeq ()
+import LawfulConversions.Relations.ShortByteStringAndTextArray ()
+import LawfulConversions.Relations.ShortByteStringAndWord8List ()
+import LawfulConversions.Relations.StrictTextBuilderAndString ()
+import LawfulConversions.Relations.StrictTextBuilderAndText ()
+import LawfulConversions.Relations.StringAndText ()
+import LawfulConversions.Relations.TextArrayAndWord8List ()

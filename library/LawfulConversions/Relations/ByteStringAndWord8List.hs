@@ -12,6 +12,10 @@ instance IsSome ByteString [Word8] where
 instance IsSome [Word8] ByteString where
   to = Data.ByteString.unpack
 
+instance IsMany ByteString [Word8]
+
+instance IsMany [Word8] ByteString
+
 instance Is ByteString [Word8]
 
 instance Is [Word8] ByteString

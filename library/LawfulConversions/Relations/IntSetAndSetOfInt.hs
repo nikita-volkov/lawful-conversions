@@ -11,6 +11,10 @@ instance IsSome (Set Int) IntSet where
 instance IsSome IntSet (Set Int) where
   to = fromList . toList
 
+instance IsMany (Set Int) IntSet
+
+instance IsMany IntSet (Set Int)
+
 instance Is (Set Int) IntSet
 
 instance Is IntSet (Set Int)

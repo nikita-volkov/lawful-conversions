@@ -13,6 +13,10 @@ instance IsSome (Map Int v) (IntMap v) where
 instance IsSome (IntMap v) (Map Int v) where
   to = Data.IntMap.Strict.fromList . Data.Map.Strict.toList
 
+instance IsMany (Map Int v) (IntMap v)
+
+instance IsMany (IntMap v) (Map Int v)
+
 instance Is (Map Int v) (IntMap v)
 
 instance Is (IntMap v) (Map Int v)

@@ -38,6 +38,7 @@ library
   other-modules:
     LawfulConversions.Classes
     LawfulConversions.Classes.Is
+    LawfulConversions.Classes.IsMany
     LawfulConversions.Classes.IsSome
     LawfulConversions.Optics
     LawfulConversions.Prelude

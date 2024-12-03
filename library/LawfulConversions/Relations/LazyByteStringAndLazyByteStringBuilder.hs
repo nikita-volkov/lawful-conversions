@@ -12,6 +12,10 @@ instance IsSome Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder 
 instance IsSome Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString where
   to = Data.ByteString.Builder.lazyByteString
 
+instance IsMany Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder
+
+instance IsMany Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString
+
 instance Is Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder
 
 instance Is Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString

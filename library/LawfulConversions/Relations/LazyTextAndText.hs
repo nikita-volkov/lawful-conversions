@@ -12,6 +12,10 @@ instance IsSome Data.Text.Lazy.Text Text where
 instance IsSome Text Data.Text.Lazy.Text where
   to = Data.Text.Lazy.toStrict
 
+instance IsMany Data.Text.Lazy.Text Text
+
+instance IsMany Text Data.Text.Lazy.Text
+
 instance Is Data.Text.Lazy.Text Text
 
 instance Is Text Data.Text.Lazy.Text

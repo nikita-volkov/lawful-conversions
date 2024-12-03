@@ -16,6 +16,10 @@ instance IsSome Data.Text.Lazy.Text Data.Text.Encoding.StrictBuilder where
 instance IsSome Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Text where
   to = Data.Text.Encoding.textToStrictBuilder . Data.Text.Lazy.toStrict
 
+instance IsMany Data.Text.Lazy.Text Data.Text.Encoding.StrictBuilder
+
+instance IsMany Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Text
+
 instance Is Data.Text.Lazy.Text Data.Text.Encoding.StrictBuilder
 
 instance Is Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Text

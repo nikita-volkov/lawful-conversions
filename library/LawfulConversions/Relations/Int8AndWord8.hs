@@ -11,6 +11,10 @@ instance IsSome Int8 Word8 where
 instance IsSome Word8 Int8 where
   to = fromIntegral
 
+instance IsMany Int8 Word8
+
+instance IsMany Word8 Int8
+
 instance Is Int8 Word8
 
 instance Is Word8 Int8

@@ -13,6 +13,10 @@ instance IsSome Data.ByteString.Builder.Builder [Word8] where
 instance IsSome [Word8] Data.ByteString.Builder.Builder where
   to = Data.ByteString.Lazy.unpack . Data.ByteString.Builder.toLazyByteString
 
+instance IsMany Data.ByteString.Builder.Builder [Word8]
+
+instance IsMany [Word8] Data.ByteString.Builder.Builder
+
 instance Is Data.ByteString.Builder.Builder [Word8]
 
 instance Is [Word8] Data.ByteString.Builder.Builder

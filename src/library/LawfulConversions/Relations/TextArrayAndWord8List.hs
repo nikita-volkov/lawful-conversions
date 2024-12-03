@@ -17,6 +17,10 @@ instance IsSome Data.Text.Array.Array [Word8] where
 instance IsSome [Word8] Data.Text.Array.Array where
   to = Data.ByteString.Short.unpack . LawfulConversions.TextCompat.Array.toShortByteString
 
+instance IsMany Data.Text.Array.Array [Word8]
+
+instance IsMany [Word8] Data.Text.Array.Array
+
 instance Is Data.Text.Array.Array [Word8]
 
 instance Is [Word8] Data.Text.Array.Array

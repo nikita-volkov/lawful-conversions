@@ -6,15 +6,21 @@ import LawfulConversions.Classes.IsSome
 -- Lossy or canonicalizing conversion.
 -- Captures mappings from multiple alternative inputs into one output.
 --
--- E.g., ByteString can be decoded into Text with UTF-8 leniently, replacing the invalid chars.
+-- E.g.,
 --
--- `String` has a wider range of supported chars than `Text` and so there cannot be a one-to-one mapping covered by the `Is` class, however it is
+-- - `ByteString` can be decoded into `Text` with UTF-8 leniently, replacing the invalid chars with a default char.
+--
+-- - `String` has a wider range of supported chars than `Text`, so some chars get replaced too.
 --
 -- === Laws
 --
 -- ==== 'from' is an inverse of 'to'
 --
 -- > \sup -> sup == from (to sup)
+--
+-- === Testing
+--
+-- For testing whether your instances conform to these laws use 'LawfulConversions.isManyProperties'.
 class (IsSome sup sub) => IsMany sup sub where
   -- |
   -- Possibly lossy inverse of 'to'.

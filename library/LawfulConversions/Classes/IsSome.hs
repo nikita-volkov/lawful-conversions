@@ -35,9 +35,10 @@ class IsSome sup sub where
 
   -- |
   -- [Partial inverse](https://en.wikipedia.org/wiki/Inverse_function#Partial_inverses) of 'to'.
-  --
-  -- This function is a [partial bijection](https://en.wikipedia.org/wiki/Bijection#Generalization_to_partial_functions).
   maybeFrom :: sup -> Maybe sub
+
+  -- |
+  -- Requires the presence of 'IsSome' in reverse direction.
   default maybeFrom :: (IsSome sub sup) => sup -> Maybe sub
   maybeFrom = Just . to
 

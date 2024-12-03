@@ -33,8 +33,6 @@
 -- evident what any of its instances do and it provides property-tests for you
 -- to validate your instances.
 --
--- The library is an offspring from the ["isomorphism-class"](https://hackage.haskell.org/package/isomorphism-class) library.
---
 -- = Conversions
 --
 -- The main part of the API is two functions: 'to' and 'from'. Both

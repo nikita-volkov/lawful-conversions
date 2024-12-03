@@ -1,7 +1,13 @@
 -- |
--- Lawful solution to the conversion problem.
+-- Lawful typeclasses capturing three main patterns of bidirectional mapping. The typeclasses form a layered hierarchy with ascending strictness of laws.
 --
--- = Conversion problem
+-- 1. `IsSome`: Smart constructor
+--
+-- 2. `IsMany`: Lossy conversion
+--
+-- 3. `Is`: Isomorphism
+--
+-- = The conversion problem
 --
 -- Have you ever looked for a @toString@ function? How often do you
 -- import @Data.Text.Lazy@ only to call its 'Data.Text.Lazy.fromStrict'? How
@@ -23,55 +29,35 @@
 -- inconsistencies across instances, their behaviour not being evident to
 -- the user and no way to check whether an instance is correct.
 --
--- This library tackles this problem with a lawful typeclass, making it
+-- This library tackles this problem with a lawful typeclass hierarchy, making it
 -- evident what any of its instances do and it provides property-tests for you
 -- to validate your instances.
 --
--- = The insight
+-- The library is an offspring from the ["isomorphism-class"](https://hackage.haskell.org/package/isomorphism-class) library.
 --
--- The key insight of this library is that if you add a requirement for the
--- conversion to be lossless and to have a mirror conversion in the opposite
--- direction, there usually appears to be only one way of defining it. That
--- makes it very clear what the conversion does to the user and how to define
--- it to the author of the conversion.
--- It also gives a clear criteria for validating whether the instances are correct, which can be encoded in property-tests.
+-- = Conversions
 --
--- That insight itself stems from an observation that almost all of the
--- practical conversions in Haskell share a property: you can restore the
--- original data from its converted form. E.g., you can get a text from
--- a text-builder and you can create a text-builder from a text, you can convert
--- a bytestring into a list of bytes and vice-versa, bytestring to\/from bytearray,
--- strict bytestring to\/from lazy, list to\/from sequence, sequence to/from
--- vector, set of ints to\/from int-set. In other words, it's always a two-way
--- street with them and there's a lot of instances of this pattern.
---
--- = UX
---
--- A few other accidental findings like encoding this property with recursive
--- typeclass constraints and fine-tuning for the use of
--- the @TypeApplications@ extension resulted in a terse and clear API.
---
--- Essentially the whole API is just two functions: 'to' and 'from'. Both
--- perform a conversion between two types. The only difference between them
+-- The main part of the API is two functions: 'to' and 'from'. Both
+-- perform a conversion between two types. The main difference between them
 -- is in what the first type application parameter specifies. E.g.:
 --
 -- > toString = to @String
 --
 -- > fromText = from @Text
 --
--- The types are self-evident:
+-- The types should be self-evident:
 --
 -- > > :t to @String
 -- > to @String :: IsSome String b => b -> String
 --
 -- > > :t from @Text
--- > from @Text :: Is Text b => Text -> b
+-- > from @Text :: IsMany Text b => Text -> b
 --
 -- In other words 'to' and 'from' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type
--- inferencer.
+-- inferencer or the reader.
 --
--- Here are more practical examples:
+-- == Examples
 --
 -- @
 -- renderNameAndHeight :: 'Text' -> 'Int' -> 'Text'
@@ -81,7 +67,7 @@
 -- @
 --
 -- @
--- combineEncodings :: 'Data.ByteString.Short.ShortByteString' -> 'Data.Primitive.ByteArray' -> 'Data.ByteString.Lazy.ByteString' -> [Word8]
+-- combineEncodings :: 'Data.ByteString.Short.ShortByteString' -> 'Data.Primitive.ByteArray' -> ['Word8'] -> 'Data.ByteString.Lazy.ByteString'
 -- combineEncodings a b c =
 --   'from' @'Data.ByteString.Builder.Builder' $
 --     'to' a <> 'to' b <> 'to' c
@@ -89,7 +75,7 @@
 --
 -- = Partial conversions
 --
--- Atop of all said this library also captures the notion of smart constructors via the 'IsSome' class, which associates a total 'to' conversion with partial 'maybeFrom'.
+-- This library also captures the pattern of smart constructors via the 'IsSome' class, which associates a total 'to' conversion with its partial inverse 'maybeFrom'.
 --
 -- This captures the codec relationship between types.
 -- E.g.,
@@ -101,12 +87,13 @@
 -- - Every URL can be uniquely represented as 'Text', but most 'Text's are not URLs unfortunately.
 module LawfulConversions
   ( -- * Typeclasses
-    Is,
     IsSome (..),
-    from,
+    IsMany (..),
+    Is,
 
     -- * Optics
     isSomePrism,
+    isManyIso,
     isIso,
 
     -- * Instance derivation

@@ -20,8 +20,6 @@ class (IsSome sup sub) => IsMany sup sub where
   -- Possibly lossy inverse of 'to'.
   -- [Surjection](https://en.wikipedia.org/wiki/Surjective_function) from @sup@ to @sub@.
   --
-  -- You can think of it as a version of 'maybeFrom', which provides default handling of cases where 'maybeFrom' would have produced 'Nothing'.
-  --
   -- Particularly useful in combination with the @TypeApplications@ extension,
   -- where it allows to specify the input type, e.g.:
   --

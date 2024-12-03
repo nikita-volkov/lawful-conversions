@@ -25,7 +25,7 @@ import LawfulConversions.Prelude
 --
 -- === Testing
 --
--- For testing whether your instances conform to these laws use 'LawfulConversions.isSomeLawsProperties'.
+-- For testing whether your instances conform to these laws use 'LawfulConversions.isSomeProperties'.
 class IsSome sup sub where
   -- |
   -- Convert a value of a subset type to a superset type.

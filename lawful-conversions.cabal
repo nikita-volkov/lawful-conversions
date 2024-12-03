@@ -40,9 +40,9 @@ library
     LawfulConversions.Classes.Is
     LawfulConversions.Classes.IsMany
     LawfulConversions.Classes.IsSome
-    LawfulConversions.Laws
     LawfulConversions.Optics
     LawfulConversions.Prelude
+    LawfulConversions.Properties
     LawfulConversions.Proxies
     LawfulConversions.Proxies.ViaIsSome
     LawfulConversions.Relations

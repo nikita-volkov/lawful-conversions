@@ -1,6 +1,6 @@
-module LawfulConversions.Laws
-  ( isSomeLawsProperties,
-    isLawsProperties,
+module LawfulConversions.Properties
+  ( isSomeProperties,
+    isProperties,
   )
 where
 
@@ -19,13 +19,13 @@ import Test.QuickCheck
 -- >   describe "IsSome laws" do
 -- >     traverse_
 -- >       (uncurry prop)
--- >       (isSomeLawsProperties @Int32 @Int16 Proxy Proxy)
-isSomeLawsProperties ::
+-- >       (isSomeProperties @Int32 @Int16 Proxy Proxy)
+isSomeProperties ::
   (IsSome a b, Eq a, Eq b, Show a, Arbitrary b, Show b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
-isSomeLawsProperties superp subp =
+isSomeProperties superp subp =
   [ ( "'to' is injective",
       property \a b ->
         a /= b ==>
@@ -52,13 +52,13 @@ isSomeLawsProperties superp subp =
 -- >   describe "Is laws" do
 -- >     traverse_
 -- >       (uncurry prop)
--- >       (isLawsProperties @Int32 @Word32 Proxy Proxy)
-isLawsProperties ::
+-- >       (isProperties @Int32 @Word32 Proxy Proxy)
+isProperties ::
   (Is a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
-isLawsProperties superp subp =
+isProperties superp subp =
   [ directedLaws "↻" superp subp,
     directedLaws "↺" subp superp
   ]
@@ -69,7 +69,7 @@ isLawsProperties superp subp =
           property \b ->
             b === to (asProxyTypeOf (to (asProxyTypeOf b bp)) ap)
         )
-          : prefixEachName "Partially isomorphic: " (isSomeLawsProperties ap bp)
+          : prefixEachName "Partially isomorphic: " (isSomeProperties ap bp)
       )
         & prefixEachName (prefix <> ": ")
 

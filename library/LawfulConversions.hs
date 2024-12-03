@@ -115,12 +115,12 @@ module LawfulConversions
     module LawfulConversions.Proxies,
 
     -- * Testing
-    module LawfulConversions.Laws,
+    module LawfulConversions.Properties,
   )
 where
 
 import LawfulConversions.Classes
-import LawfulConversions.Laws
 import LawfulConversions.Optics
+import LawfulConversions.Properties
 import LawfulConversions.Proxies
 import LawfulConversions.Relations ()

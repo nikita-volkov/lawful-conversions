@@ -1,10 +1,9 @@
-
 # Patterns
 
-This library captures three patterns of bidirectionaly mapping with lawful typeclasses organized in a simple layered hierarchy adding stricter laws on each level.
+This library captures three patterns of bidirectional mapping. It provides lawful typeclasses organized in a simple layered hierarchy which each layer exibiting stricter laws.
 
 ## 1. `IsSome`: Smart constructor pattern
 
-## 2. `IsAll`: Lossy conversion
+## 2. `IsMany`: Lossy conversion
 
 ## 3. `Is`: Isomorphism

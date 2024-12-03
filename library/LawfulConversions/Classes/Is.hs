@@ -1,6 +1,6 @@
 module LawfulConversions.Classes.Is where
 
-import LawfulConversions.Classes.IsAll
+import LawfulConversions.Classes.IsMany
 import LawfulConversions.Classes.IsSome
 
 -- | Bidirectional conversion between two types with no loss of information.
@@ -33,21 +33,7 @@ import LawfulConversions.Classes.IsSome
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isLawsProperties'.
-class (IsAll b a, Is b a) => Is a b
+class (IsMany a b, Is b a) => Is a b
 
 -- | Any type is isomorphic to itself.
 instance Is a a
-
--- |
--- 'to' in reverse direction.
---
--- Particularly useful in combination with the @TypeApplications@ extension,
--- where it allows to specify the input type, e.g.:
---
--- > fromText :: Is Text b => Text -> b
--- > fromText = from @Text
---
--- The first type application of the 'to' function on the other hand specifies
--- the output data type.
-from :: (Is a b) => a -> b
-from = to

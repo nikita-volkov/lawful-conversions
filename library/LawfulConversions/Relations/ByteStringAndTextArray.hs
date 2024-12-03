@@ -17,9 +17,9 @@ instance IsSome ByteString Data.Text.Array.Array where
 instance IsSome Data.Text.Array.Array ByteString where
   to = LawfulConversions.TextCompat.Array.fromShortByteString . Data.ByteString.Short.toShort
 
-instance IsAll ByteString Data.Text.Array.Array
+instance IsMany ByteString Data.Text.Array.Array
 
-instance IsAll Data.Text.Array.Array ByteString
+instance IsMany Data.Text.Array.Array ByteString
 
 instance Is ByteString Data.Text.Array.Array
 

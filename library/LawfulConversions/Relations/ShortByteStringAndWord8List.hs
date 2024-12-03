@@ -13,9 +13,9 @@ instance IsSome [Word8] Data.ByteString.Short.ShortByteString where
 instance IsSome Data.ByteString.Short.ShortByteString [Word8] where
   to = Data.ByteString.Short.pack
 
-instance IsAll [Word8] Data.ByteString.Short.ShortByteString
+instance IsMany [Word8] Data.ByteString.Short.ShortByteString
 
-instance IsAll Data.ByteString.Short.ShortByteString [Word8]
+instance IsMany Data.ByteString.Short.ShortByteString [Word8]
 
 instance Is [Word8] Data.ByteString.Short.ShortByteString
 

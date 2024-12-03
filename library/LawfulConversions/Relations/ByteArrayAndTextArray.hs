@@ -17,9 +17,9 @@ instance IsSome Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
 instance IsSome Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
   to = LawfulConversions.TextCompat.Array.fromByteArray
 
-instance IsAll Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
+instance IsMany Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
 
-instance IsAll Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray
+instance IsMany Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray
 
 instance Is Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
 

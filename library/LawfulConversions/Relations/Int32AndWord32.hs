@@ -11,9 +11,9 @@ instance IsSome Int32 Word32 where
 instance IsSome Word32 Int32 where
   to = fromIntegral
 
-instance IsAll Int32 Word32
+instance IsMany Int32 Word32
 
-instance IsAll Word32 Int32
+instance IsMany Word32 Int32
 
 instance Is Int32 Word32
 

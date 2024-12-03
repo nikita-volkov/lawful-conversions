@@ -13,9 +13,9 @@ instance IsSome Data.ByteString.Builder.Builder [Word8] where
 instance IsSome [Word8] Data.ByteString.Builder.Builder where
   to = Data.ByteString.Lazy.unpack . Data.ByteString.Builder.toLazyByteString
 
-instance IsAll Data.ByteString.Builder.Builder [Word8]
+instance IsMany Data.ByteString.Builder.Builder [Word8]
 
-instance IsAll [Word8] Data.ByteString.Builder.Builder
+instance IsMany [Word8] Data.ByteString.Builder.Builder
 
 instance Is Data.ByteString.Builder.Builder [Word8]
 

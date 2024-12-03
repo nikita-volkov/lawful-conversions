@@ -16,9 +16,9 @@ instance IsSome Data.Primitive.ByteArray.ByteArray Data.ByteString.Builder.Build
 instance IsSome Data.ByteString.Builder.Builder Data.Primitive.ByteArray.ByteArray where
   to = to . to @Data.ByteString.Short.ShortByteString
 
-instance IsAll Data.Primitive.ByteArray.ByteArray Data.ByteString.Builder.Builder
+instance IsMany Data.Primitive.ByteArray.ByteArray Data.ByteString.Builder.Builder
 
-instance IsAll Data.ByteString.Builder.Builder Data.Primitive.ByteArray.ByteArray
+instance IsMany Data.ByteString.Builder.Builder Data.Primitive.ByteArray.ByteArray
 
 instance Is Data.Primitive.ByteArray.ByteArray Data.ByteString.Builder.Builder
 

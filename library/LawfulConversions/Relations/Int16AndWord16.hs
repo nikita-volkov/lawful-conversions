@@ -11,9 +11,9 @@ instance IsSome Int16 Word16 where
 instance IsSome Word16 Int16 where
   to = fromIntegral
 
-instance IsAll Int16 Word16
+instance IsMany Int16 Word16
 
-instance IsAll Word16 Int16
+instance IsMany Word16 Int16
 
 instance Is Int16 Word16
 

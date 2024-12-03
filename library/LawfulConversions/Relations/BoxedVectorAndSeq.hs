@@ -13,9 +13,9 @@ instance IsSome (Vector a) (Seq a) where
 instance IsSome (Seq a) (Vector a) where
   to = Data.Sequence.fromList . Data.Vector.toList
 
-instance IsAll (Vector a) (Seq a)
+instance IsMany (Vector a) (Seq a)
 
-instance IsAll (Seq a) (Vector a)
+instance IsMany (Seq a) (Vector a)
 
 instance Is (Vector a) (Seq a)
 

@@ -11,9 +11,9 @@ instance IsSome Int Word where
 instance IsSome Word Int where
   to = fromIntegral
 
-instance IsAll Int Word
+instance IsMany Int Word
 
-instance IsAll Word Int
+instance IsMany Word Int
 
 instance Is Int Word
 

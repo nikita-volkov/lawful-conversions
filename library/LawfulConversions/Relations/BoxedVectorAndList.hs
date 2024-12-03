@@ -12,9 +12,9 @@ instance IsSome (Vector a) [a] where
 instance IsSome [a] (Vector a) where
   to = Data.Vector.toList
 
-instance IsAll (Vector a) [a]
+instance IsMany (Vector a) [a]
 
-instance IsAll [a] (Vector a)
+instance IsMany [a] (Vector a)
 
 instance Is (Vector a) [a]
 

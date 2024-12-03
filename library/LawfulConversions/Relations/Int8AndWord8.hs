@@ -11,9 +11,9 @@ instance IsSome Int8 Word8 where
 instance IsSome Word8 Int8 where
   to = fromIntegral
 
-instance IsAll Int8 Word8
+instance IsMany Int8 Word8
 
-instance IsAll Word8 Int8
+instance IsMany Word8 Int8
 
 instance Is Int8 Word8
 

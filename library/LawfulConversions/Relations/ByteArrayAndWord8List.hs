@@ -13,9 +13,9 @@ instance IsSome Data.Primitive.ByteArray.ByteArray [Word8] where
 instance IsSome [Word8] Data.Primitive.ByteArray.ByteArray where
   to = toList
 
-instance IsAll Data.Primitive.ByteArray.ByteArray [Word8]
+instance IsMany Data.Primitive.ByteArray.ByteArray [Word8]
 
-instance IsAll [Word8] Data.Primitive.ByteArray.ByteArray
+instance IsMany [Word8] Data.Primitive.ByteArray.ByteArray
 
 instance Is Data.Primitive.ByteArray.ByteArray [Word8]
 

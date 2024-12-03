@@ -12,9 +12,9 @@ instance IsSome [a] (Seq a) where
 instance IsSome (Seq a) [a] where
   to = Data.Sequence.fromList
 
-instance IsAll [a] (Seq a)
+instance IsMany [a] (Seq a)
 
-instance IsAll (Seq a) [a]
+instance IsMany (Seq a) [a]
 
 instance Is [a] (Seq a)
 

@@ -17,9 +17,9 @@ instance IsSome Data.Text.Lazy.Builder.Builder Data.Text.Encoding.StrictBuilder 
 instance IsSome Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Builder.Builder where
   to = Data.Text.Encoding.textToStrictBuilder . Data.Text.Lazy.toStrict . Data.Text.Lazy.Builder.toLazyText
 
-instance IsAll Data.Text.Lazy.Builder.Builder Data.Text.Encoding.StrictBuilder
+instance IsMany Data.Text.Lazy.Builder.Builder Data.Text.Encoding.StrictBuilder
 
-instance IsAll Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Builder.Builder
+instance IsMany Data.Text.Encoding.StrictBuilder Data.Text.Lazy.Builder.Builder
 
 instance Is Data.Text.Lazy.Builder.Builder Data.Text.Encoding.StrictBuilder
 

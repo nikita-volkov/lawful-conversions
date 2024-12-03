@@ -14,4 +14,7 @@ instance IsSome String Data.Text.Encoding.StrictBuilder where
   to = to . Data.Text.Encoding.strictBuilderToText
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
 
+instance IsMany String Data.Text.Encoding.StrictBuilder where
+  from =  Data.Text.Encoding.textToStrictBuilder . from
+
 #endif

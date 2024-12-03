@@ -55,6 +55,7 @@ import Data.String as Exports
 import Data.Text as Exports (Text)
 import Data.Traversable as Exports
 import Data.Tuple as Exports
+import Data.UUID.Types as Exports (UUID)
 import Data.Vector as Exports (Vector)
 import Data.Version as Exports
 import Data.Void as Exports

@@ -79,15 +79,20 @@ library
     LawfulConversions.Relations.LazyTextAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextAndString
     LawfulConversions.Relations.LazyTextAndText
+    LawfulConversions.Relations.LazyTextAndUuid
     LawfulConversions.Relations.LazyTextBuilderAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextBuilderAndString
     LawfulConversions.Relations.LazyTextBuilderAndText
+    LawfulConversions.Relations.LazyTextBuilderAndUuid
     LawfulConversions.Relations.ListAndSeq
     LawfulConversions.Relations.ShortByteStringAndTextArray
     LawfulConversions.Relations.ShortByteStringAndWord8List
     LawfulConversions.Relations.StrictTextBuilderAndString
     LawfulConversions.Relations.StrictTextBuilderAndText
+    LawfulConversions.Relations.StrictTextBuilderAndUuid
     LawfulConversions.Relations.StringAndText
+    LawfulConversions.Relations.StringAndUuid
+    LawfulConversions.Relations.TextAndUuid
     LawfulConversions.Relations.TextArrayAndWord8List
     LawfulConversions.TextCompat.Array
 
@@ -101,6 +106,7 @@ library
     profunctors >=5 && <6,
     text >=1.2 && <2.2,
     unordered-containers >=0.2 && <0.3,
+    uuid-types >=1.0 && <1.1,
     vector >=0.12 && <0.14,
 
 test-suite test

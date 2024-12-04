@@ -1,22 +1,22 @@
 # Summary
 
-Lawful typeclasses capturing three main patterns of bidirectional mapping. The typeclasses form a layered hierarchy with ascending strictness of laws:
+Lawful typeclasses capturing three patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
 
-1. `IsSome`: Smart constructor pattern
+1. `IsSome`: Smart constructor
 
 2. `IsMany`: Lossy conversion
 
-3. `Is`: Isomorphism (lossless conversion)
+3. `Is`: Isomorphism or lossless conversion
 
 # The conversion problem
 
 Have you ever looked for a `toString` function? How often do you
-import `Data.Text.Lazy` only to call its `Data.Text.Lazy.fromStrict`? How
+import `Data.Text.Lazy` only to call its `fromStrict`? How
 about importing `Data.ByteString.Builder` only to call its
-`Data.ByteString.Builder.toLazyByteString` and then importing
-`Data.ByteString.Lazy` only to call its `Data.ByteString.Lazy.toStrict`?
+`toLazyByteString` and then importing
+`Data.ByteString.Lazy` only to call its `toStrict`?
 
-Those all are instances of one pattern. They are conversions between
+Those all are instances of one pattern. They are conversions between different
 representations of the same information. Codebases that don't attempt to
 abstract over this pattern tend to be sprawling with this type of
 boilerplate. It's noise to the codereader, it's a burden to the
@@ -33,3 +33,7 @@ the user and no way to check whether an instance is correct.
 This library tackles this problem with a lawful typeclass hierarchy, making it
 evident what any of its instances do and it provides property-tests for you
 to validate your instances.
+
+# Prior work and acknowledgements
+
+This library is a direct successor of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. It also shares some ideas with "[control-iso](https://hackage.haskell.org/package/control-iso)" and "[type-iso](https://hackage.haskell.org/package/type-iso)".

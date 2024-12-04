@@ -78,6 +78,9 @@
 -- >       else if double > 1
 -- >         then Percent 1
 -- >         else Percent double
+-- 
+-- However declaring an instance of 'Is' would be incorrect, because this conversion is partial.
+-- Namely, while every @Percent@ value can be losslessly transformed into 'Double', not every 'Double' can be losslessly transformed into @Percent@.
 module LawfulConversions
   ( -- * Typeclasses
     IsSome (..),

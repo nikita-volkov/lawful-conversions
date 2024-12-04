@@ -25,7 +25,7 @@ import LawfulConversions.Classes.IsMany
 --
 -- For all values of /a/ converting from /a/ to /b/ and then converting from /b/ to /a/ produces the original value:
 --
--- > \a -> a == from (to @b a)
+-- > \a -> a == to (from @a @b a)
 --
 -- === Testing
 --

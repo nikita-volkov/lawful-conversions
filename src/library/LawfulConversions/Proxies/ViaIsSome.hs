@@ -5,7 +5,7 @@ import LawfulConversions.Prelude
 import qualified Test.QuickCheck as QuickCheck
 
 -- |
--- Helper for deriving common instances on types which have an instance of @'IsSome' sup@ using the @DerivingVia@ extension.
+-- Helper for deriving common instances on types which have an instance of @'IsSome' a@ using the @DerivingVia@ extension.
 --
 -- E.g.,
 --
@@ -22,51 +22,51 @@ import qualified Test.QuickCheck as QuickCheck
 --
 -- In the code above all the instances that are able to construct the values of 'Percent' are automatically derived based on the @IsSome Double Percent@ instance.
 -- This guarantees that they only construct values that pass thru the checks defined in 'maybeFrom'.
-newtype ViaIsSome sup sub = ViaIsSome sub
+newtype ViaIsSome a b = ViaIsSome b
 
-instance (IsSome sup sub) => IsSome sup (ViaIsSome sup sub) where
+instance (IsSome a b) => IsSome a (ViaIsSome a b) where
   to (ViaIsSome a) = to a
   maybeFrom = fmap ViaIsSome . maybeFrom
 
-instance IsSome sub (ViaIsSome sup sub) where
+instance IsSome b (ViaIsSome a b) where
   to = coerce
 
-instance IsSome (ViaIsSome sup sub) sub where
+instance IsSome (ViaIsSome a b) b where
   to = coerce
 
-instance IsMany sub (ViaIsSome sup sub)
+instance IsMany b (ViaIsSome a b)
 
-instance IsMany (ViaIsSome sup sub) sub
+instance IsMany (ViaIsSome a b) b
 
-instance Is sub (ViaIsSome sup sub)
+instance Is b (ViaIsSome a b)
 
-instance Is (ViaIsSome sup sub) sub
+instance Is (ViaIsSome a b) b
 
-instance (IsSome sup sub, Show sup) => Show (ViaIsSome sup sub) where
-  show (ViaIsSome a) = show (to @sup a)
+instance (IsSome a b, Show a) => Show (ViaIsSome a b) where
+  show (ViaIsSome a) = show (to @a a)
 
-instance (IsSome sup sub, Read sup) => Read (ViaIsSome sup sub) where
+instance (IsSome a b, Read a) => Read (ViaIsSome a b) where
   readPrec = do
-    sup <- readPrec
-    case maybeFrom @sup sup of
+    a <- readPrec
+    case maybeFrom @a a of
       Just a -> pure (ViaIsSome a)
       Nothing -> fail "Value is not from the subset"
 
-instance (IsSome sup sub, IsString sup) => IsString (ViaIsSome sup sub) where
+instance (IsSome a b, IsString a) => IsString (ViaIsSome a b) where
   fromString =
-    maybe (error "Value is not from the subset") ViaIsSome . maybeFrom @sup . fromString
+    maybe (error "Value is not from the subset") ViaIsSome . maybeFrom @a . fromString
 
-instance (IsSome sup sub, Eq sup) => Eq (ViaIsSome sup sub) where
-  (==) = on (==) (to @sup)
+instance (IsSome a b, Eq a) => Eq (ViaIsSome a b) where
+  (==) = on (==) (to @a)
 
-instance (IsSome sup sub, Ord sup) => Ord (ViaIsSome sup sub) where
-  compare = on compare (to @sup)
+instance (IsSome a b, Ord a) => Ord (ViaIsSome a b) where
+  compare = on compare (to @a)
 
-instance (IsSome sup sub, QuickCheck.Arbitrary sup) => QuickCheck.Arbitrary (ViaIsSome sup sub) where
+instance (IsSome a b, QuickCheck.Arbitrary a) => QuickCheck.Arbitrary (ViaIsSome a b) where
   arbitrary =
-    QuickCheck.suchThatMap QuickCheck.arbitrary (maybeFrom @sup)
+    QuickCheck.suchThatMap QuickCheck.arbitrary (maybeFrom @a)
   shrink value = do
-    shrunkValue <- QuickCheck.shrink (to @sup value)
+    shrunkValue <- QuickCheck.shrink (to @a value)
     shrunkValue
       & maybeFrom
       & maybeToList

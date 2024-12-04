@@ -1,5 +1,6 @@
-module LawfulConversions.Classes (module Exports) where
+module LawfulConversions.Classes
+  ( module LawfulConversions.Classes.Is,
+  )
+where
 
-import LawfulConversions.Classes.Is as Exports
-import LawfulConversions.Classes.IsMany as Exports
-import LawfulConversions.Classes.IsSome as Exports
+import LawfulConversions.Classes.Is

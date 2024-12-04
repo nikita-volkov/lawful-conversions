@@ -1,4 +1,8 @@
-module LawfulConversions.Classes.IsMany where
+module LawfulConversions.Classes.IsMany
+  ( module LawfulConversions.Classes.IsMany,
+    module LawfulConversions.Classes.IsSome,
+  )
+where
 
 import LawfulConversions.Classes.IsSome
 
@@ -14,31 +18,31 @@ import LawfulConversions.Classes.IsSome
 --
 -- === Laws
 --
--- ==== 'from' is an inverse of 'to'
+-- ==== 'from' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
 --
--- > \sup -> sup == from (to sup)
+-- > \b -> b == from (to @a b)
 --
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isManyProperties'.
-class (IsSome sup sub) => IsMany sup sub where
+class (IsSome a b) => IsMany a b where
   -- |
   -- Possibly lossy inverse of 'to'.
-  -- [Surjection](https://en.wikipedia.org/wiki/Surjective_function) from @sup@ to @sub@.
+  -- [Surjection](https://en.wikipedia.org/wiki/Surjective_function) from @a@ to @b@.
   --
   -- Particularly useful in combination with the @TypeApplications@ extension,
   -- where it allows to specify the input type, e.g.:
   --
-  -- > fromText :: IsMany Text sub => Text -> sub
+  -- > fromText :: IsMany Text b => Text -> b
   -- > fromText = from @Text
   --
   -- The first type application of the 'to' function on the other hand specifies
   -- the output data type.
-  from :: sup -> sub
+  from :: a -> b
 
   -- |
   -- Requires the presence of 'IsSome' in reverse direction.
-  default from :: (IsSome sub sup) => sup -> sub
+  default from :: (IsSome b a) => a -> b
   from = to
 
-instance IsMany sup sup
+instance IsMany a a

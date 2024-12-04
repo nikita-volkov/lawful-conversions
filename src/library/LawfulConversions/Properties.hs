@@ -32,7 +32,7 @@ isSomeProperties aProxy bProxy =
         a /= b ==>
           to' a =/= to' b
     ),
-    ( "'maybeFrom' is an inverse of 'to'",
+    ( "'maybeFrom' is a partial inverse of 'to'",
       property \a ->
         maybeFrom' (to' a) === Just a
     )

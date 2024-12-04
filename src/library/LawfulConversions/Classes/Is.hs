@@ -1,4 +1,8 @@
-module LawfulConversions.Classes.Is where
+module LawfulConversions.Classes.Is
+  ( module LawfulConversions.Classes.Is,
+    module LawfulConversions.Classes.IsMany,
+  )
+where
 
 import LawfulConversions.Classes.IsMany
 
@@ -11,16 +15,17 @@ import LawfulConversions.Classes.IsMany
 --
 -- === Laws
 --
--- /B/ is isomorphic to /A/ if and only if there exists a conversion from /B/
--- to /A/ ('LawfulConversions.Classes.IsSome.to') and a conversion from /A/ to /B/ ('from') such that:
+-- ==== 'from' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
 --
--- - @'from' . 'LawfulConversions.Classes.IsSome.to' = 'id'@ - For all values of /B/ converting from /B/ to /A/
---     and then converting from /A/ to /B/ produces a value that is identical
---     to the original.
+-- For all values of /b/ converting from /b/ to /a/ and then converting from /a/ to /b/ produces the original value:
 --
--- - @'LawfulConversions.Classes.IsSome.to' . 'from' = 'id'@ - For all values of /A/ converting from /A/ to /B/
---     and then converting from /B/ to /A/ produces a value that is identical
---     to the original.
+-- > \b -> b == from (to @a b)
+--
+-- ==== 'to' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'from'
+--
+-- For all values of /a/ converting from /a/ to /b/ and then converting from /b/ to /a/ produces the original value:
+--
+-- > \a -> a == from (to @b a)
 --
 -- === Testing
 --
@@ -28,8 +33,27 @@ import LawfulConversions.Classes.IsMany
 --
 -- === Instance Definition
 --
--- For each pair of isomorphic types (/A/ and /B/) the compiler will require
--- you to define six instances, namely: @Is A B@ and @Is B A@, @IsMany A B@ and @IsMany B A@, @IsSome A B@ and @IsSome B A@.
+-- For each pair of isomorphic types (/A/ and /B/) the compiler will require you to define six instances, namely: @Is A B@ and @Is B A@, @IsMany A B@ and @IsMany B A@, @IsSome A B@ and @IsSome B A@.
+--
+-- Instances of @Is@ do not define any functions and serve merely as a statement that the laws are satisfied.
+--
+-- ==== __Example: Lazy Text and Text__
+--
+-- @
+-- instance IsSome 'Data.Text.Lazy.LazyText' 'Data.Text.Text' where
+--   to = LazyText.'Data.Text.Lazy.fromStrict'
+--
+-- instance IsSome 'Data.Text.Text' 'Data.Text.Lazy.LazyText' where
+--   to = LazyText.'Data.Text.Lazy.toStrict'
+--
+-- instance IsMany 'Data.Text.Lazy.LazyText' 'Data.Text.Text'
+--
+-- instance IsMany 'Data.Text.Text' 'Data.Text.Lazy.LazyText'
+--
+-- instance Is 'Data.Text.Lazy.LazyText' 'Data.Text.Text'
+--
+-- instance Is 'Data.Text.Text' 'Data.Text.Lazy.LazyText'
+-- @
 class (IsMany a b, Is b a) => Is a b
 
 -- | Any type is isomorphic to itself.

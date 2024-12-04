@@ -3,7 +3,7 @@ module LawfulConversions.Classes.IsSome where
 import LawfulConversions.Prelude
 
 -- |
--- Evidence that all values of type @sub@ form a subset of all values of type @sup@.
+-- Evidence that all values of type @b@ form a subset of all values of type @a@.
 --
 -- [From Wikipedia](https://en.wikipedia.org/wiki/Subset):
 --
@@ -11,35 +11,33 @@ import LawfulConversions.Prelude
 --
 -- === Laws
 --
--- ==== 'to' is injective
+-- ==== 'to' is [injective](https://en.wikipedia.org/wiki/Injective_function)
 --
--- For every two values of type @sub@ that are not equal converting with 'to' will always produce values that are not equal.
+-- For every two values of type @b@ that are not equal converting with 'to' produces values that are not equal as well:
 --
--- > \(a, b) -> a == b || to a /= to b
+-- > \(b1, b2) -> b1 == b2 || to @a b1 /= to @a b2
 --
--- ==== 'maybeFrom' is an inverse of 'to'
+-- ==== 'maybeFrom' is a [partial inverse](https://en.wikipedia.org/wiki/Inverse_function#Partial_inverses) of 'to'
 --
--- For all values of @sub@ converting to @sup@ and then attempting to convert back to @sub@ always succeeds and produces a value that is equal to the original.
+-- For all values of @b@ converting to @a@ and then attempting to convert back to @b@ always succeeds and produces a value that is equal to the original:
 --
--- > \a -> maybeFrom (to a) == Just a
+-- > \b -> maybeFrom (to @a b) == Just b
 --
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isSomeProperties'.
-class IsSome sup sub where
+class IsSome a b where
   -- |
   -- Convert a value of a subset type to a superset type.
-  --
-  -- This function is injective non-surjective.
-  to :: sub -> sup
+  to :: b -> a
 
   -- |
   -- [Partial inverse](https://en.wikipedia.org/wiki/Inverse_function#Partial_inverses) of 'to'.
-  maybeFrom :: sup -> Maybe sub
+  maybeFrom :: a -> Maybe b
 
   -- |
   -- Requires the presence of 'IsSome' in reverse direction.
-  default maybeFrom :: (IsSome sub sup) => sup -> Maybe sub
+  default maybeFrom :: (IsSome b a) => a -> Maybe b
   maybeFrom = Just . to
 
 -- | Every type is isomorphic to itself.
@@ -48,6 +46,6 @@ instance IsSome a a where
   maybeFrom = Just . id
 
 -- | The empty set has no elements, and therefore is vacuously a subset of any set.
-instance IsSome sup Void where
+instance IsSome a Void where
   to = absurd
   maybeFrom = const Nothing

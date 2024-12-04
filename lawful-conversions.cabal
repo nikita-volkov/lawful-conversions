@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.1.2.1
+version: 0.1.2.2
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -27,10 +27,10 @@ description:
   = The conversion problem
 
   Have you ever looked for a @toString@ function? How often do you
-  import @Data.Text.Lazy@ only to call its 'Data.Text.Lazy.fromStrict'? How
+  import @Data.Text.Lazy@ only to call its @fromStrict@? How
   about importing @Data.ByteString.Builder@ only to call its
-  'Data.ByteString.Builder.toLazyByteString' and then importing
-  @Data.ByteString.Lazy@ only to call its 'Data.ByteString.Lazy.toStrict'?
+  @toLazyByteString@ and then importing
+  @Data.ByteString.Lazy@ only to call its @toStrict@?
 
   Those all are instances of one pattern. They are conversions between different
   representations of the same information. Codebases that don't attempt to
@@ -52,7 +52,7 @@ description:
 
   = Prior work and acknowledgements
 
-  This library is a direct successor of the ["isomorphism-class"](https://hackage.haskell.org/package/isomorphism-class) library, expanding upon the patterns discovered there. It also shares some ideas with ["control-iso"](https://hackage.haskell.org/package/control-iso) and ["type-iso"](https://hackage.haskell.org/package/type-iso).
+  This library is a direct successor of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. It also shares some ideas with "[control-iso](https://hackage.haskell.org/package/control-iso)" and "[type-iso](https://hackage.haskell.org/package/type-iso)".
 
 source-repository head
   type: git

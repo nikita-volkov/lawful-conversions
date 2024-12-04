@@ -18,11 +18,11 @@ description:
 
   Lawful typeclasses capturing three patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
 
-  1. `IsSome`: Smart constructor
+  1. Smart constructor
 
-  2. `IsMany`: Lossy conversion
+  2. Canonicalization or lossy conversion
 
-  3. `Is`: Isomorphism or lossless conversion
+  3. Isomorphism or lossless conversion
 
   = The conversion problem
 

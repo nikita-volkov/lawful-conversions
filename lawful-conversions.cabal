@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.1.3
+version: 0.1.4
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -101,6 +101,11 @@ library
     LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
+    LawfulConversions.Relations.DayAndLazyText
+    LawfulConversions.Relations.DayAndLazyTextBuilder
+    LawfulConversions.Relations.DayAndStrictTextBuilder
+    LawfulConversions.Relations.DayAndString
+    LawfulConversions.Relations.DayAndText
     LawfulConversions.Relations.Int16AndWord16
     LawfulConversions.Relations.Int32AndWord32
     LawfulConversions.Relations.Int64AndWord64

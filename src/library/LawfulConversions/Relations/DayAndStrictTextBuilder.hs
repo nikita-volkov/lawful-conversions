@@ -1,7 +1,7 @@
 {-# LANGUAGE CPP #-}
 {-# OPTIONS_GHC -Wno-orphans #-}
 
-module LawfulConversions.Relations.StrictTextBuilderAndUtcTime where
+module LawfulConversions.Relations.DayAndStrictTextBuilder where
 
 #if MIN_VERSION_text(2,1,2)
 
@@ -11,10 +11,10 @@ import LawfulConversions.Classes
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()
-import LawfulConversions.Relations.StringAndUtcTime ()
+import LawfulConversions.Relations.DayAndString ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictTextBuilder UTCTime where
+instance IsSome Data.Text.Encoding.StrictTextBuilder Day where
   to = from . to @String
   maybeFrom = maybeFrom @String . to
 
@@ -26,10 +26,10 @@ import LawfulConversions.Classes
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()
-import LawfulConversions.Relations.StringAndUtcTime ()
+import LawfulConversions.Relations.DayAndString ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictBuilder UTCTime where
+instance IsSome Data.Text.Encoding.StrictBuilder Day where
   to = from . to @String
   maybeFrom = maybeFrom @String . to
 

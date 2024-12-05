@@ -13,6 +13,7 @@ import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
+-- | Implements ISO-8601.
 instance IsSome Data.Text.Encoding.StrictTextBuilder UTCTime where
   to = from . to @String
   maybeFrom = maybeFrom @String . to
@@ -27,6 +28,7 @@ import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
+-- | Implements ISO-8601.
 instance IsSome Data.Text.Encoding.StrictBuilder UTCTime where
   to = from . to @String
   maybeFrom = maybeFrom @String . to

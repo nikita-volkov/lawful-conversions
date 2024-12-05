@@ -9,6 +9,7 @@ import LawfulConversions.Prelude
 import LawfulConversions.Relations.LazyTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
+-- | Implements ISO-8601.
 instance IsSome Data.Text.Lazy.Builder.Builder UTCTime where
   to = fromString . to
   maybeFrom = maybeFrom @String . to

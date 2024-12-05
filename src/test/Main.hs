@@ -110,12 +110,29 @@ allTests =
       testIs @Word64 @Int64 Proxy Proxy,
       testIs @Word64 @Word64 Proxy Proxy,
       testIs @Word8 @Int8 Proxy Proxy,
-      testIs @Word8 @Word8 Proxy Proxy
+      testIs @Word8 @Word8 Proxy Proxy,
+      testIsSome @Data.Text.Lazy.Text @UTCTime Proxy Proxy,
+      testIsSome @Data.Text.Lazy.Builder.Builder @UTCTime Proxy Proxy,
+      testIsSome @String @UTCTime Proxy Proxy,
+      testIsSome @Text @UTCTime Proxy Proxy
     ]
 
 testIs :: (Is a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree
 testIs superp subp =
   isProperties superp subp
+    & fmap (uncurry testProperty)
+    & testGroup groupName
+  where
+    groupName =
+      mconcat
+        [ show (typeOf (asProxyTypeOf undefined superp)),
+          "/",
+          show (typeOf (asProxyTypeOf undefined subp))
+        ]
+
+testIsSome :: (IsSome a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree
+testIsSome superp subp =
+  isSomeProperties superp subp
     & fmap (uncurry testProperty)
     & testGroup groupName
   where

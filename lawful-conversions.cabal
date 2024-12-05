@@ -101,6 +101,11 @@ library
     LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
+    LawfulConversions.Relations.DayAndLazyText
+    LawfulConversions.Relations.DayAndLazyTextBuilder
+    LawfulConversions.Relations.DayAndStrictTextBuilder
+    LawfulConversions.Relations.DayAndString
+    LawfulConversions.Relations.DayAndText
     LawfulConversions.Relations.Int16AndWord16
     LawfulConversions.Relations.Int32AndWord32
     LawfulConversions.Relations.Int64AndWord64

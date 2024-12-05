@@ -114,7 +114,11 @@ allTests =
       testIsSome @Data.Text.Lazy.Text @UTCTime Proxy Proxy,
       testIsSome @Data.Text.Lazy.Builder.Builder @UTCTime Proxy Proxy,
       testIsSome @String @UTCTime Proxy Proxy,
-      testIsSome @Text @UTCTime Proxy Proxy
+      testIsSome @Text @UTCTime Proxy Proxy,
+      testIsSome @Data.Text.Lazy.Text @Day Proxy Proxy,
+      testIsSome @Data.Text.Lazy.Builder.Builder @Day Proxy Proxy,
+      testIsSome @String @Day Proxy Proxy,
+      testIsSome @Text @Day Proxy Proxy
     ]
 
 testIs :: (Is a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree

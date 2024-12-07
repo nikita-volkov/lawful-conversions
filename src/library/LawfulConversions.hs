@@ -24,17 +24,17 @@
 -- == Examples
 --
 -- @
--- renderNameAndHeight :: 'Text' -> 'Int' -> 'Text'
--- renderNameAndHeight name height =
---   'from' @'Data.Text.Encoding.StrictTextBuilder' $
---     "Height of " <> 'to' name <> " is " <> 'to' (show height)
--- @
---
--- @
 -- combineEncodings :: 'Data.ByteString.Short.ShortByteString' -> 'Data.Primitive.ByteArray' -> ['Word8'] -> 'Data.ByteString.Lazy.ByteString'
 -- combineEncodings a b c =
 --   'from' @'Data.ByteString.Builder.Builder' $
 --     'to' a <> 'to' b <> 'to' c
+-- @
+--
+-- @
+-- renderNameAndHeight :: 'Text' -> 'Int' -> 'Text'
+-- renderNameAndHeight name height =
+--   'from' @'Data.Text.Encoding.StrictTextBuilder' $
+--     "Height of " <> 'from' name <> " is " <> 'from' (show height)
 -- @
 --
 -- = Partial conversions

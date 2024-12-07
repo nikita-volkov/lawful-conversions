@@ -37,22 +37,22 @@ import LawfulConversions.Classes.IsMany
 --
 -- Instances of @Is@ do not define any functions and serve merely as a statement that the laws are satisfied.
 --
--- ==== __Example: Lazy Text and Text__
+-- ==== Example: Lazy Text and Text
 --
 -- @
--- instance IsSome 'Data.Text.Lazy.LazyText' 'Data.Text.Text' where
+-- instance IsSome "Data.Text.Lazy.LazyText" "Data.Text.Text" where
 --   to = LazyText.'Data.Text.Lazy.fromStrict'
 --
--- instance IsSome 'Data.Text.Text' 'Data.Text.Lazy.LazyText' where
+-- instance IsSome "Data.Text.Text" "Data.Text.Lazy.LazyText" where
 --   to = LazyText.'Data.Text.Lazy.toStrict'
 --
--- instance IsMany 'Data.Text.Lazy.LazyText' 'Data.Text.Text'
+-- instance IsMany "Data.Text.Lazy.LazyText" "Data.Text.Text"
 --
--- instance IsMany 'Data.Text.Text' 'Data.Text.Lazy.LazyText'
+-- instance IsMany "Data.Text.Text" "Data.Text.Lazy.LazyText"
 --
--- instance Is 'Data.Text.Lazy.LazyText' 'Data.Text.Text'
+-- instance Is "Data.Text.Lazy.LazyText" "Data.Text.Text"
 --
--- instance Is 'Data.Text.Text' 'Data.Text.Lazy.LazyText'
+-- instance Is "Data.Text.Text" "Data.Text.Lazy.LazyText"
 -- @
 class (IsMany a b, Is b a) => Is a b
 

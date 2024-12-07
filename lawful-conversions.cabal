@@ -175,5 +175,5 @@ test-suite test
     quickcheck-instances >=0.3.32 && <0.4,
     rebase >=1.15 && <2,
     tasty >=1.2.3 && <2,
-    tasty-quickcheck >=0.10.1 && <0.11,
+    tasty-quickcheck >=0.11 && <0.12,
     text >=1.2 && <3,

@@ -58,7 +58,7 @@ source-repository head
   type: git
   location: git://github.com/nikita-volkov/lawful-conversions.git
 
-common language-settings
+common base
   default-language: Haskell2010
   default-extensions:
     BlockArguments
@@ -73,7 +73,7 @@ common language-settings
     UndecidableSuperClasses
 
 library
-  import: language-settings
+  import: base
   hs-source-dirs: src/library
   exposed-modules: LawfulConversions
   other-modules:
@@ -164,7 +164,7 @@ library
     vector >=0.12 && <0.14,
 
 test-suite test
-  import: language-settings
+  import: base
   type: exitcode-stdio-1.0
   hs-source-dirs: src/test
   main-is: Main.hs

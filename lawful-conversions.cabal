@@ -99,6 +99,7 @@ library
     LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder
     LawfulConversions.Relations.ByteStringAndLazyText
     LawfulConversions.Relations.ByteStringAndShortByteString
+    LawfulConversions.Relations.ByteStringAndString
     LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
@@ -117,6 +118,7 @@ library
     LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder
     LawfulConversions.Relations.LazyByteStringAndLazyText
     LawfulConversions.Relations.LazyByteStringAndShortByteString
+    LawfulConversions.Relations.LazyByteStringAndString
     LawfulConversions.Relations.LazyByteStringAndText
     LawfulConversions.Relations.LazyByteStringAndTextArray
     LawfulConversions.Relations.LazyByteStringAndWord8List

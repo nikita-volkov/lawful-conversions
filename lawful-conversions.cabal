@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.1.5
+version: 0.1.6
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -58,7 +58,7 @@ source-repository head
   type: git
   location: git://github.com/nikita-volkov/lawful-conversions.git
 
-common language-settings
+common base
   default-language: Haskell2010
   default-extensions:
     BlockArguments
@@ -73,7 +73,7 @@ common language-settings
     UndecidableSuperClasses
 
 library
-  import: language-settings
+  import: base
   hs-source-dirs: src/library
   exposed-modules: LawfulConversions
   other-modules:
@@ -99,6 +99,7 @@ library
     LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder
     LawfulConversions.Relations.ByteStringAndLazyText
     LawfulConversions.Relations.ByteStringAndShortByteString
+    LawfulConversions.Relations.ByteStringAndString
     LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
@@ -117,6 +118,7 @@ library
     LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder
     LawfulConversions.Relations.LazyByteStringAndLazyText
     LawfulConversions.Relations.LazyByteStringAndShortByteString
+    LawfulConversions.Relations.LazyByteStringAndString
     LawfulConversions.Relations.LazyByteStringAndText
     LawfulConversions.Relations.LazyByteStringAndTextArray
     LawfulConversions.Relations.LazyByteStringAndWord8List
@@ -164,7 +166,7 @@ library
     vector >=0.12 && <0.14,
 
 test-suite test
-  import: language-settings
+  import: base
   type: exitcode-stdio-1.0
   hs-source-dirs: src/test
   main-is: Main.hs

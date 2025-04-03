@@ -56,7 +56,7 @@ description:
 
 source-repository head
   type: git
-  location: git://github.com/nikita-volkov/lawful-conversions.git
+  location: https://github.com/nikita-volkov/lawful-conversions
 
 common base
   default-language: Haskell2010

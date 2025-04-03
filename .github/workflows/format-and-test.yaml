@@ -1,18 +1,19 @@
-name: Compile, test and check the docs
-
 on:
   push:
     branches:
       - master
   pull_request:
+  workflow_call: 
+
+concurrency:
+  group: format-and-test
+  cancel-in-progress: true
 
 jobs:
-
   format:
     uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/format.yaml@v3
     secrets: inherit
-  
+
   test:
-    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/check.yaml@v3
+    uses: nikita-volkov/check-haskell-fast.github-actions-workflow/.github/workflows/check-haskell-fast.yaml@v1
     secrets: inherit
-  

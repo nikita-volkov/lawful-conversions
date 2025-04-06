@@ -52,7 +52,13 @@ description:
 
   = Prior work and acknowledgements
 
-  This library is a direct successor of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. It also shares some ideas with "[control-iso](https://hackage.haskell.org/package/control-iso)" and "[type-iso](https://hackage.haskell.org/package/type-iso)".
+  This library is an offspring of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. Both libraries are maintained letting their designs compete.
+
+  Some ideas and concepts are also shared with the following libraries:
+
+  - [control-iso](https://hackage.haskell.org/package/control-iso)
+  - [type-iso](https://hackage.haskell.org/package/type-iso)
+  - [injections](https://hackage.haskell.org/package/injections)
 
 source-repository head
   type: git

@@ -14,6 +14,16 @@ jobs:
     uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/format.yaml@v3
     secrets: inherit
 
+  build-ghc-8-8:
+    uses: nikita-volkov/check-haskell-fast.github-actions-workflow/.github/workflows/main.yaml@v2
+    secrets: inherit
+    with:
+      ghc: "8.8.1"
+      skip-doctest: true
+      skip-benchmarks: true
+      skip-cabal-check: true
+      skip-haddock: true
+  
   build-latest:
     uses: nikita-volkov/check-haskell-fast.github-actions-workflow/.github/workflows/main.yaml@v2
     secrets: inherit

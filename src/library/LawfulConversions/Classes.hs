@@ -82,12 +82,25 @@ class (IsSome a b) => IsMany a b where
   --
   -- The first type application of the 'to' function on the other hand specifies
   -- the output data type.
+  --
+  -- If you want to specify the output type instead, use 'onto'.
   from :: a -> b
 
   -- |
   -- Requires the presence of 'IsSome' in reverse direction.
   default from :: (IsSome b a) => a -> b
   from = to
+
+-- |
+-- Alias to 'from', which lets you specify the target type of the conversion first using @TypeApplications@.
+--
+-- In mathematics @onto@ is another name for [Surjective function](https://en.wikipedia.org/wiki/Surjective_function).
+--
+-- E.g.,
+--
+-- > lenientDecodeUtf8 = onto @Text
+onto :: forall b a. (IsMany a b) => a -> b
+onto = from
 
 instance IsMany a a
 

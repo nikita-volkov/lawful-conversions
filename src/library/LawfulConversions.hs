@@ -85,6 +85,7 @@ module LawfulConversions
   ( -- * Typeclasses
     IsSome (..),
     IsMany (..),
+    onto,
     Is,
 
     -- * Optics

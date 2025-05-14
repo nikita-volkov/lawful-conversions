@@ -85,8 +85,10 @@ module LawfulConversions
   ( -- * Typeclasses
     IsSome (..),
     IsMany (..),
-    onto,
     Is,
+    
+    -- * Combinators
+    onto,
 
     -- * Optics
     isSomePrism,

@@ -87,6 +87,9 @@ module LawfulConversions
     IsMany (..),
     Is,
 
+    -- * Combinators
+    onto,
+
     -- * Optics
     isSomePrism,
     isManyIso,

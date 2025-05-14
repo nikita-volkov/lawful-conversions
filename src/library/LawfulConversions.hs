@@ -86,7 +86,7 @@ module LawfulConversions
     IsSome (..),
     IsMany (..),
     Is,
-    
+
     -- * Combinators
     onto,
 

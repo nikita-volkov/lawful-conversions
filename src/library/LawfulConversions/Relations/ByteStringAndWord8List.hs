@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ByteStringAndWord8List where
 
 import qualified Data.ByteString
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome ByteString [Word8] where

@@ -6,7 +6,7 @@ module LawfulConversions.Relations.StrictTextBuilderAndText where
 #if MIN_VERSION_text(2,1,2)
 
 import qualified Data.Text.Encoding
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Text Data.Text.Encoding.StrictTextBuilder where
@@ -26,7 +26,7 @@ instance Is Data.Text.Encoding.StrictTextBuilder Text
 #elif MIN_VERSION_text(2,0,2)
 
 import qualified Data.Text.Encoding
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Text Data.Text.Encoding.StrictBuilder where

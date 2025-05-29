@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.StringAndText where
 
 import qualified Data.Text as Text
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome String Text where

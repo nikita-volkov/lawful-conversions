@@ -5,7 +5,7 @@ module LawfulConversions.Relations.LazyTextBuilderAndUuid where
 import qualified Data.Text.Lazy
 import qualified Data.Text.Lazy.Builder
 import qualified Data.UUID.Types
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Lazy.Builder.Builder UUID where

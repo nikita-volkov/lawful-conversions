@@ -7,7 +7,7 @@ module LawfulConversions.Relations.DayAndStrictTextBuilder where
 
 import qualified Data.Text.Encoding
 import Data.Time
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()
@@ -22,7 +22,7 @@ instance IsSome Data.Text.Encoding.StrictTextBuilder Day where
 
 import qualified Data.Text.Encoding
 import Data.Time
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StrictTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndText ()

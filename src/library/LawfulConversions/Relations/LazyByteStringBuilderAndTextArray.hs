@@ -9,7 +9,7 @@ import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
 import qualified Data.ByteString.Short
 import qualified Data.Text.Array
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 

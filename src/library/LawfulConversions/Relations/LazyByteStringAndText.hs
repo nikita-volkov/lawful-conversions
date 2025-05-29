@@ -7,7 +7,7 @@ import qualified Data.Text
 import qualified Data.Text.Encoding.Error
 import qualified Data.Text.Lazy
 import qualified Data.Text.Lazy.Encoding
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | UTF-8 codec.

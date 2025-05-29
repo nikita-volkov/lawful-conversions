@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ByteStringAndShortByteString where
 
 import qualified Data.ByteString.Short
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome ByteString Data.ByteString.Short.ShortByteString where

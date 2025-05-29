@@ -4,7 +4,7 @@ module LawfulConversions.Relations.LazyByteStringAndShortByteString where
 
 import qualified Data.ByteString.Lazy
 import qualified Data.ByteString.Short
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.ByteString.Lazy.ByteString Data.ByteString.Short.ShortByteString where

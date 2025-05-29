@@ -4,7 +4,7 @@ module LawfulConversions.Relations.BoxedVectorAndSeq where
 
 import qualified Data.Sequence
 import qualified Data.Vector
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome (Vector a) (Seq a) where

@@ -2,7 +2,7 @@
 
 module LawfulConversions.Relations.IntSetAndSetOfInt where
 
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome (Set Int) IntSet where

@@ -105,7 +105,7 @@ module LawfulConversions
   )
 where
 
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Optics
 import LawfulConversions.Properties
 import LawfulConversions.Proxies

@@ -4,7 +4,7 @@ module LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder where
 
 import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 
 instance IsSome Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder where
   to = Data.ByteString.Builder.toLazyByteString

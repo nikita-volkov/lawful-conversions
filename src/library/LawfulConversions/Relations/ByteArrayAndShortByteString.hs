@@ -5,7 +5,7 @@ module LawfulConversions.Relations.ByteArrayAndShortByteString where
 import qualified Data.ByteString.Short
 import qualified Data.ByteString.Short.Internal
 import qualified Data.Primitive.ByteArray
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 
 instance IsSome Data.ByteString.Short.ShortByteString Data.Primitive.ByteArray.ByteArray where
   to (Data.Primitive.ByteArray.ByteArray array) =

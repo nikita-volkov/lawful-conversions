@@ -1,6 +1,6 @@
 module LawfulConversions.Proxies.ViaIsSome where
 
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified Test.QuickCheck as QuickCheck
 

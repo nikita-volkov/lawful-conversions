@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.TextAndUtcTime where
 
 import Data.Time
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()

@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.TextAndUuid where
 
 import qualified Data.UUID.Types as Uuid
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Text UUID where

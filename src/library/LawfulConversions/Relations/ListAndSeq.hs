@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ListAndSeq where
 
 import qualified Data.Sequence
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome [a] (Seq a) where

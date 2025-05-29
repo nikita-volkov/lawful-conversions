@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ByteStringAndLazyByteString where
 
 import qualified Data.ByteString.Lazy
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome ByteString Data.ByteString.Lazy.ByteString where

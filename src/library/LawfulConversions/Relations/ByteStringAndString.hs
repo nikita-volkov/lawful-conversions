@@ -5,7 +5,7 @@ module LawfulConversions.Relations.ByteStringAndString where
 import qualified Data.Text
 import qualified Data.Text.Encoding
 import qualified Data.Text.Encoding.Error
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | UTF-8 codec.

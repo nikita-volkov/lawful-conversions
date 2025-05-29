@@ -2,7 +2,7 @@
 
 module LawfulConversions.Relations.IntAndWord where
 
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Int Word where

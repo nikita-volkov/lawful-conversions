@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.BoxedVectorAndList where
 
 import qualified Data.Vector
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome (Vector a) [a] where

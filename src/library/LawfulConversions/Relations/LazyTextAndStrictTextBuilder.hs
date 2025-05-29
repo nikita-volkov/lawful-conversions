@@ -7,7 +7,7 @@ module LawfulConversions.Relations.LazyTextAndStrictTextBuilder where
 
 import qualified Data.Text.Encoding
 import qualified Data.Text.Lazy
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Lazy.Text Data.Text.Encoding.StrictTextBuilder where
@@ -28,7 +28,7 @@ instance Is Data.Text.Encoding.StrictTextBuilder Data.Text.Lazy.Text
 
 import qualified Data.Text.Encoding
 import qualified Data.Text.Lazy
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Lazy.Text Data.Text.Encoding.StrictBuilder where

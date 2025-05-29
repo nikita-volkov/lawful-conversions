@@ -4,7 +4,7 @@ module LawfulConversions.Relations.IntMapAndMapOfInt where
 
 import qualified Data.IntMap.Strict
 import qualified Data.Map.Strict
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome (Map Int v) (IntMap v) where

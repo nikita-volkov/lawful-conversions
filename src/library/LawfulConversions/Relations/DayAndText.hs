@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.DayAndText where
 
 import Data.Time
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.DayAndString ()
 import LawfulConversions.Relations.StringAndText ()

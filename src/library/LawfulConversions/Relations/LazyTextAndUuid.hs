@@ -4,7 +4,7 @@ module LawfulConversions.Relations.LazyTextAndUuid where
 
 import qualified Data.Text.Lazy
 import qualified Data.UUID.Types
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Lazy.Text UUID where

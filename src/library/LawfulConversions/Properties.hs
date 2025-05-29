@@ -5,7 +5,7 @@ module LawfulConversions.Properties
   )
 where
 
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import Test.QuickCheck
 

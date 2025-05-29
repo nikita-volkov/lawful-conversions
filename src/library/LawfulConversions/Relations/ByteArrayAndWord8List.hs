@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ByteArrayAndWord8List where
 
 import qualified Data.Primitive.ByteArray
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.ByteArrayAndShortByteString ()
 

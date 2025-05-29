@@ -1,7 +1,7 @@
 module LawfulConversions.Optics where
 
 import Data.Profunctor
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | Van-Laarhoven-style Prism, compatible with libraries like \"lens\" and \"optics\".

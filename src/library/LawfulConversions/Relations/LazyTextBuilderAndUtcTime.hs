@@ -4,7 +4,7 @@ module LawfulConversions.Relations.LazyTextBuilderAndUtcTime where
 
 import qualified Data.Text.Lazy.Builder
 import Data.Time
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.LazyTextBuilderAndString ()
 import LawfulConversions.Relations.StringAndUtcTime ()

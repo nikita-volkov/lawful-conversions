@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.LazyTextAndString where
 
 import qualified Data.Text.Lazy
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.StringAndText ()
 

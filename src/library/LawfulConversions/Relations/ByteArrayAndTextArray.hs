@@ -7,7 +7,7 @@ module LawfulConversions.Relations.ByteArrayAndTextArray where
 
 import qualified Data.Primitive.ByteArray
 import qualified Data.Text.Array
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 

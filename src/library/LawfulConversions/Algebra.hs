@@ -1,4 +1,4 @@
-module LawfulConversions.Classes where
+module LawfulConversions.Algebra where
 
 import LawfulConversions.Prelude
 

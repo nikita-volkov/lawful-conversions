@@ -3,7 +3,7 @@
 module LawfulConversions.Relations.ShortByteStringAndWord8List where
 
 import qualified Data.ByteString.Short
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.ByteArrayAndShortByteString ()
 

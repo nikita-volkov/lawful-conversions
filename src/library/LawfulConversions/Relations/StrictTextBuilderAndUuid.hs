@@ -7,7 +7,7 @@ module LawfulConversions.Relations.StrictTextBuilderAndUuid where
 
 import qualified Data.UUID.Types
 import qualified Data.Text.Encoding
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Encoding.StrictTextBuilder UUID where
@@ -18,7 +18,7 @@ instance IsSome Data.Text.Encoding.StrictTextBuilder UUID where
 
 import qualified Data.UUID.Types
 import qualified Data.Text.Encoding
-import LawfulConversions.Classes
+import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 instance IsSome Data.Text.Encoding.StrictBuilder UUID where

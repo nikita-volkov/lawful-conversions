@@ -66,6 +66,11 @@ isManyProperties aProxy bProxy =
       property \a -> case maybeFrom a of
         Nothing -> property Discard
         Just b -> b === from' a
+    ),
+    ( "'to' after 'from' always succeeds with 'maybeFrom'",
+      property \a ->
+        let b = from' a
+         in maybeFrom (to' b) === Just b
     )
   ]
     <> isSomeProperties aProxy bProxy

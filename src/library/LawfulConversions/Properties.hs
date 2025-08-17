@@ -54,15 +54,21 @@ isSomeProperties aProxy bProxy =
 -- >       (uncurry prop)
 -- >       (isManyProperties @String @Text Proxy Proxy)
 isManyProperties ::
-  (IsMany a b, Eq a, Eq b, Show a, Show b, Arbitrary b) =>
+  (IsMany a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
 isManyProperties aProxy bProxy =
-  ( "'from' is an inverse of 'to'",
-    property \b -> b === from' (to' b)
-  )
-    : isSomeProperties aProxy bProxy
+  [ ( "'from' is an inverse of 'to'",
+      property \b -> b === from' (to' b)
+    ),
+    ( "'from' is consistent with 'maybeFrom'",
+      property \a -> case maybeFrom a of
+        Nothing -> property Discard
+        Just b -> b === from' a
+    )
+  ]
+    <> isSomeProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
     from' = as bProxy . from . as aProxy

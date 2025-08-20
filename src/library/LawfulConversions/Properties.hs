@@ -22,19 +22,20 @@ import Test.QuickCheck
 -- >       (uncurry prop)
 -- >       (isSomeProperties @Int32 @Int16 Proxy Proxy)
 isSomeProperties ::
-  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary b) =>
+  forall a b.
+  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
 isSomeProperties aProxy bProxy =
   [ ( "'to' is injective",
-      property \a b ->
-        a /= b ==>
-          to' a =/= to' b
+      property \b1 b2 ->
+        b1 /= b2 ==>
+          to' b1 =/= to' b2
     ),
     ( "'maybeFrom' is a partial inverse of 'to'",
-      property \a ->
-        maybeFrom' (to' a) === Just a
+      property \b ->
+        maybeFrom' (to' b) === Just b
     )
   ]
   where

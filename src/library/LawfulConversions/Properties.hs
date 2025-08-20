@@ -54,6 +54,7 @@ isSomeProperties aProxy bProxy =
 -- >       (uncurry prop)
 -- >       (isManyProperties @String @Text Proxy Proxy)
 isManyProperties ::
+  forall a b.
   (IsMany a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
@@ -63,9 +64,9 @@ isManyProperties aProxy bProxy =
       property \b -> b === from' (to' b)
     ),
     ( "'from' is consistent with 'maybeFrom'",
-      property \a -> case maybeFrom a of
-        Nothing -> property Discard
-        Just b -> b === from' a
+      property \(b :: b) ->
+        let a = to @a b
+         in maybeFrom (to @a b) === Just (from @a @b a)
     ),
     ( "'to' after 'from' always succeeds with 'maybeFrom'",
       property \a ->

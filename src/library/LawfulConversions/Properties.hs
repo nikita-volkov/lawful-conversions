@@ -23,7 +23,7 @@ import Test.QuickCheck
 -- >       (isSomeProperties @Int32 @Int16 Proxy Proxy)
 isSomeProperties ::
   forall a b.
-  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
+  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]

@@ -15,7 +15,7 @@ instance IsSome String Data.Text.Encoding.StrictTextBuilder where
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
 
 instance IsMany String Data.Text.Encoding.StrictTextBuilder where
-  from =  Data.Text.Encoding.textToStrictBuilder . from
+  onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom
 
 #elif MIN_VERSION_text(2,0,2)
 
@@ -29,6 +29,6 @@ instance IsSome String Data.Text.Encoding.StrictBuilder where
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
 
 instance IsMany String Data.Text.Encoding.StrictBuilder where
-  from =  Data.Text.Encoding.textToStrictBuilder . from
+  onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom
 
 #endif

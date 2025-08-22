@@ -15,7 +15,7 @@ import LawfulConversions.Relations.StringAndUtcTime ()
 
 -- | Implements ISO-8601.
 instance IsSome Data.Text.Encoding.StrictTextBuilder UTCTime where
-  to = from . to @String
+  to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
 
 #elif MIN_VERSION_text(2,0,2)
@@ -30,7 +30,7 @@ import LawfulConversions.Relations.StringAndUtcTime ()
 
 -- | Implements ISO-8601.
 instance IsSome Data.Text.Encoding.StrictBuilder UTCTime where
-  to = from . to @String
+  to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
 
 #endif

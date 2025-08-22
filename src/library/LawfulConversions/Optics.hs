@@ -14,7 +14,7 @@ isSomePrism =
 
 -- | Van-Laarhoven-style Isomorphism, compatible with libraries like \"lens\" and \"optics\".
 isManyIso :: (IsMany a b, Profunctor p, Functor f) => p b (f b) -> p a (f a)
-isManyIso = dimap from (fmap to)
+isManyIso = dimap onfrom (fmap to)
 
 -- | Van-Laarhoven-style Isomorphism, compatible with libraries like \"lens\" and \"optics\".
 isIso :: (Is a b, Profunctor p, Functor f) => p b (f b) -> p a (f a)

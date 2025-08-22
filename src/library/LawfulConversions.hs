@@ -1,23 +1,23 @@
 -- |
 -- = Conversions
 --
--- The main part of the API is two functions: 'to' and 'from'. Both
+-- The main part of the API is two functions: 'to' and 'onfrom'. Both
 -- perform a conversion between two types. The main difference between them
 -- is in what the first type application parameter specifies. E.g.:
 --
 -- > toString = to @String
 --
--- > fromText = from @Text
+-- > fromText = onfrom @Text
 --
 -- The types should be self-evident:
 --
 -- > > :t to @String
 -- > to @String :: IsSome String b => b -> String
 --
--- > > :t from @Text
--- > from @Text :: IsMany Text b => Text -> b
+-- > > :t onfrom @Text
+-- > onfrom @Text :: IsMany Text b => Text -> b
 --
--- In other words 'to' and 'from' let you explicitly specify either the source
+-- In other words 'to' and 'onfrom' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type
 -- inferencer or the reader.
 --
@@ -26,15 +26,15 @@
 -- @
 -- combineEncodings :: 'Data.ByteString.Short.ShortByteString' -> 'Data.Primitive.ByteArray' -> ['Word8'] -> 'Data.ByteString.Lazy.ByteString'
 -- combineEncodings a b c =
---   'from' @'Data.ByteString.Builder.Builder' $
+--   'onfrom' @'Data.ByteString.Builder.Builder' $
 --     'to' a <> 'to' b <> 'to' c
 -- @
 --
 -- @
 -- renderNameAndHeight :: 'Text' -> 'Int' -> 'Text'
 -- renderNameAndHeight name height =
---   'from' @'Data.Text.Encoding.StrictTextBuilder' $
---     "Height of " <> 'from' name <> " is " <> 'from' (show height)
+--   'onfrom' @'Data.Text.Encoding.StrictTextBuilder' $
+--     "Height of " <> 'onfrom' name <> " is " <> 'onfrom' (show height)
 -- @
 --
 -- = Partial conversions
@@ -72,7 +72,7 @@
 -- You can also expand upon that and provide a default handling of invalid values effectively providing a lossy canonicalizing conversion ([Surjection](https://en.wikipedia.org/wiki/Surjective_function)):
 --
 -- > instance IsMany Double Percent where
--- >   from double =
+-- >   onfrom double =
 -- >     if double < 0
 -- >       then Percent 0
 -- >       else if double > 1

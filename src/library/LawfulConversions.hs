@@ -81,6 +81,7 @@ module LawfulConversions
     Is,
 
     -- * Combinators
+    from,
     onto,
 
     -- * Optics

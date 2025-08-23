@@ -51,6 +51,17 @@ instance IsSome a Void where
   maybeFrom = const Nothing
 
 -- |
+-- Convert a value of a superset type to a subset type specifying the superset type first.
+--
+-- Alias to 'to' with the only difference in the argument order.
+--
+-- E.g.,
+--
+-- > fromText = from @Text
+from :: forall b a. (IsSome a b) => b -> a
+from = to
+
+-- |
 -- Lossy or canonicalizing conversion.
 -- Captures mappings from multiple alternative inputs into one output.
 --
@@ -77,11 +88,8 @@ class (IsSome a b) => IsMany a b where
   -- Particularly useful in combination with the @TypeApplications@ extension,
   -- where it allows to specify the input type, e.g.:
   --
-  -- > fromText :: IsMany Text b => Text -> b
-  -- > fromText = onfrom @Text
-  --
-  -- The first type application of the 'to' function on the other hand specifies
-  -- the output data type.
+  -- > fromString :: IsMany String b => String -> b
+  -- > fromString = onfrom @String
   --
   -- If you want to specify the output type instead, use 'onto'.
   onfrom :: a -> b
@@ -99,6 +107,13 @@ class (IsSome a b) => IsMany a b where
 -- E.g.,
 --
 -- > lenientDecodeUtf8 = onto @Text
+--
+-- @
+-- combineTexts :: 'Text' -> 'ByteString' -> 'Int' -> 'Text'
+-- combineTexts name email height =
+--   'from' @'Data.Text.Encoding.StrictTextBuilder' $
+--     "Height of " <> 'to' name <> " is " <> 'onto' (show height) <> " and email is " <> 'onto' email
+-- @
 onto :: forall b a. (IsMany a b) => a -> b
 onto = onfrom
 

@@ -140,6 +140,12 @@ instance IsMany a a
 --
 -- > \a -> a == to (from @a @b a)
 --
+-- ==== 'from' equals 'onfrom'
+--
+-- For isomorphic types, both ways of converting should be equivalent:
+--
+-- > \a -> from @b @a a == onfrom @a @b a
+--
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isProperties'.

@@ -29,6 +29,12 @@ import LawfulConversions.Prelude
 --
 -- > \a b -> maybeFrom a == Just b ==> to b == a
 --
+-- ==== Mathematical foundation
+--
+-- These laws establish that type @b@ forms a subset of type @a@ in the mathematical sense.
+-- The 'to' function provides the canonical injection, while 'maybeFrom' recognizes which values of @a@ 
+-- correspond to values from the subset @b@.
+--
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isSomeProperties'.
@@ -87,7 +93,15 @@ from = to
 --
 -- Every value of type @b@ can be obtained by applying 'onfrom' to some value of type @a@:
 --
--- > \b -> exists a. onfrom a == b
+-- > \b -> exists a. onfrom @b a == b
+--
+-- Note: This property cannot be directly tested with QuickCheck as it requires existential quantification.
+--
+-- ==== Law hierarchy
+--
+-- 'IsMany' extends 'IsSome', so all laws from 'IsSome' also apply here.
+-- The combination ensures that 'onfrom' provides a canonical (possibly lossy) conversion from @a@ to @b@,
+-- while 'to' provides the lossless injection from @b@ to @a@.
 --
 -- === Testing
 --
@@ -144,13 +158,18 @@ instance IsMany a a
 --
 -- For all values of /b/ converting from /b/ to /a/ and then converting from /a/ to /b/ produces the original value:
 --
--- > \b -> b == from (to @a b)
+-- > \b -> b == from @b (to @a b)
 --
 -- ==== 'to' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'from'
 --
 -- For all values of /a/ converting from /a/ to /b/ and then converting from /b/ to /a/ produces the original value:
 --
--- > \a -> a == to (from @a @b a)
+-- > \a -> a == to @a (from @b a)
+--
+-- ==== Mathematical relationship
+--
+-- These two laws together establish that 'to' and 'from' form a true [isomorphism](https://en.wikipedia.org/wiki/Isomorphism) between types @a@ and @b@.
+-- Note that 'from' is implemented as 'to' from the reverse 'Is' instance, ensuring the symmetry required for isomorphisms.
 --
 -- === Testing
 --

@@ -23,7 +23,7 @@ import Test.QuickCheck
 -- >       (isSomeProperties @Int32 @Int16 Proxy Proxy)
 isSomeProperties ::
   forall a b.
-  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary b) =>
+  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
@@ -36,6 +36,12 @@ isSomeProperties aProxy bProxy =
     ( "'maybeFrom' is a partial inverse of 'to'",
       property \b ->
         maybeFrom' (to' b) === Just b
+    ),
+    ( "'maybeFrom' characterizes the image of 'to'",
+      property \a ->
+        case maybeFrom' a of
+          Just b -> to' b === a
+          Nothing -> property True
     )
   ]
   where

@@ -32,7 +32,7 @@ import LawfulConversions.Prelude
 -- ==== Mathematical foundation
 --
 -- These laws establish that type @b@ forms a subset of type @a@ in the mathematical sense.
--- The 'to' function provides the canonical injection, while 'maybeFrom' recognizes which values of @a@ 
+-- The 'to' function provides the canonical injection, while 'maybeFrom' recognizes which values of @a@
 -- correspond to values from the subset @b@.
 --
 -- === Testing

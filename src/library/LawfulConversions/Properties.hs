@@ -98,10 +98,10 @@ isProperties ::
   Proxy b ->
   [(String, Property)]
 isProperties aProxy bProxy =
-  ( "'to' is an inverse of 'onfrom'",
-    property \b -> b === to' (onfrom' b)
+  ( "'to' is an inverse of 'from'",
+    property \b -> b === to' (from' b)
   )
     : isManyProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
-    onfrom' = as bProxy . onfrom . as aProxy
+    from' = as bProxy . from . as aProxy

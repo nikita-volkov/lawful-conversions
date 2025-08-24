@@ -128,17 +128,17 @@ instance IsMany a a
 --
 -- === Laws
 --
--- ==== 'onfrom' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
+-- ==== 'from' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
 --
 -- For all values of /b/ converting from /b/ to /a/ and then converting from /a/ to /b/ produces the original value:
 --
--- > \b -> b == onfrom (to @a b)
+-- > \b -> b == from (to @a b)
 --
--- ==== 'to' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'onfrom'
+-- ==== 'to' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'from'
 --
 -- For all values of /a/ converting from /a/ to /b/ and then converting from /b/ to /a/ produces the original value:
 --
--- > \a -> a == to (onfrom @a @b a)
+-- > \a -> a == to (from @a @b a)
 --
 -- === Testing
 --

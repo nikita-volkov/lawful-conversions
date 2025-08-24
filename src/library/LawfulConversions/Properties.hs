@@ -69,6 +69,16 @@ isManyProperties ::
 isManyProperties aProxy bProxy =
   [ ( "'onfrom' is an inverse of 'to'",
       property \b -> b === onfrom' (to' b)
+    ),
+    ( "'onfrom' is consistent with 'maybeFrom'",
+      property \(b :: b) ->
+        let a = to @a b
+         in maybeFrom (to @a b) === Just (onfrom @a @b a)
+    ),
+    ( "'to' after 'onfrom' always succeeds with 'maybeFrom'",
+      property \a ->
+        let b = onfrom' a
+         in maybeFrom (to' b) === Just b
     )
   ]
     <> isSomeProperties aProxy bProxy
@@ -94,14 +104,10 @@ isProperties ::
   Proxy b ->
   [(String, Property)]
 isProperties aProxy bProxy =
-  [ ( "'to' is an inverse of 'from'",
-      property \b -> b === to' (from' b)
-    ),
-    ( "'from' is an inverse of 'to'",
-      property \a -> a === from' (to' a)
-    )
-  ]
-    <> isManyProperties aProxy bProxy
+  ( "'to' is an inverse of 'from'",
+    property \b -> b === to' (from' b)
+  )
+    : isManyProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
     from' = as bProxy . from . as aProxy

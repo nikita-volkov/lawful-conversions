@@ -14,4 +14,4 @@ instance IsSome ByteString Text where
 
 -- | Lenient UTF-8 decoding.
 instance IsMany ByteString Text where
-  from = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode
+  onfrom = Data.Text.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode

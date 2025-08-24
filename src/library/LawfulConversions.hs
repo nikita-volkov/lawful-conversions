@@ -30,13 +30,6 @@
 --     'to' a <> 'to' b <> 'to' c
 -- @
 --
--- @
--- renderNameAndHeight :: 'Text' -> 'Int' -> 'Text'
--- renderNameAndHeight name height =
---   'from' @'Data.Text.Encoding.StrictTextBuilder' $
---     "Height of " <> 'from' name <> " is " <> 'from' (show height)
--- @
---
 -- = Partial conversions
 --
 -- This library also captures the pattern of smart constructors via the 'IsSome' class, which associates a total 'to' conversion with its partial inverse 'maybeFrom'.
@@ -72,7 +65,7 @@
 -- You can also expand upon that and provide a default handling of invalid values effectively providing a lossy canonicalizing conversion ([Surjection](https://en.wikipedia.org/wiki/Surjective_function)):
 --
 -- > instance IsMany Double Percent where
--- >   from double =
+-- >   onfrom double =
 -- >     if double < 0
 -- >       then Percent 0
 -- >       else if double > 1
@@ -88,6 +81,7 @@ module LawfulConversions
     Is,
 
     -- * Combinators
+    from,
     onto,
 
     -- * Optics

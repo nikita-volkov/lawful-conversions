@@ -12,4 +12,4 @@ instance IsSome String Data.Text.Lazy.Text where
   maybeFrom = fmap Data.Text.Lazy.fromStrict . maybeFrom
 
 instance IsMany String Data.Text.Lazy.Text where
-  from = fromString
+  onfrom = fromString

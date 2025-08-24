@@ -61,24 +61,24 @@ isManyProperties ::
   Proxy b ->
   [(String, Property)]
 isManyProperties aProxy bProxy =
-  [ ( "'from' is an inverse of 'to'",
-      property \b -> b === from' (to' b)
+  [ ( "'onfrom' is an inverse of 'to'",
+      property \b -> b === onfrom' (to' b)
     ),
-    ( "'from' is consistent with 'maybeFrom'",
+    ( "'onfrom' is consistent with 'maybeFrom'",
       property \(b :: b) ->
         let a = to @a b
-         in maybeFrom (to @a b) === Just (from @a @b a)
+         in maybeFrom (to @a b) === Just (onfrom @a @b a)
     ),
-    ( "'to' after 'from' always succeeds with 'maybeFrom'",
+    ( "'to' after 'onfrom' always succeeds with 'maybeFrom'",
       property \a ->
-        let b = from' a
+        let b = onfrom' a
          in maybeFrom (to' b) === Just b
     )
   ]
     <> isSomeProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
-    from' = as bProxy . from . as aProxy
+    onfrom' = as bProxy . onfrom . as aProxy
 
 -- |
 -- Properties testing whether an instance satisfies the laws of 'Is'.

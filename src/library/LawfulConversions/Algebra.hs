@@ -51,6 +51,17 @@ instance IsSome a Void where
   maybeFrom = const Nothing
 
 -- |
+-- Convert a value of a superset type to a subset type specifying the superset type first.
+--
+-- Alias to 'to' with the only difference in the argument order.
+--
+-- E.g.,
+--
+-- > fromText = from @Text
+from :: forall b a. (IsSome a b) => b -> a
+from = to
+
+-- |
 -- Lossy or canonicalizing conversion.
 -- Captures mappings from multiple alternative inputs into one output.
 --
@@ -62,9 +73,9 @@ instance IsSome a Void where
 --
 -- === Laws
 --
--- ==== 'from' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
+-- ==== 'onfrom' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
 --
--- > \b -> b == from (to @a b)
+-- > \b -> b == onfrom (to @a b)
 --
 -- === Testing
 --
@@ -77,30 +88,34 @@ class (IsSome a b) => IsMany a b where
   -- Particularly useful in combination with the @TypeApplications@ extension,
   -- where it allows to specify the input type, e.g.:
   --
-  -- > fromText :: IsMany Text b => Text -> b
-  -- > fromText = from @Text
-  --
-  -- The first type application of the 'to' function on the other hand specifies
-  -- the output data type.
+  -- > fromString :: IsMany String b => String -> b
+  -- > fromString = onfrom @String
   --
   -- If you want to specify the output type instead, use 'onto'.
-  from :: a -> b
+  onfrom :: a -> b
 
   -- |
   -- Requires the presence of 'IsSome' in reverse direction.
-  default from :: (IsSome b a) => a -> b
-  from = to
+  default onfrom :: (IsSome b a) => a -> b
+  onfrom = to
 
 -- |
--- Alias to 'from', which lets you specify the target type of the conversion first using @TypeApplications@.
+-- Alias to 'onfrom', which lets you specify the target type of the conversion first using @TypeApplications@.
 --
 -- In mathematics @onto@ is another name for [Surjective function](https://en.wikipedia.org/wiki/Surjective_function).
 --
 -- E.g.,
 --
 -- > lenientDecodeUtf8 = onto @Text
+--
+-- @
+-- combineTexts :: 'Text' -> 'ByteString' -> 'Int' -> 'Text'
+-- combineTexts name email height =
+--   'from' @'Data.Text.Encoding.StrictTextBuilder' $
+--     "Height of " <> 'to' name <> " is " <> 'onto' (show height) <> " and email is " <> 'onto' email
+-- @
 onto :: forall b a. (IsMany a b) => a -> b
-onto = from
+onto = onfrom
 
 instance IsMany a a
 

@@ -13,4 +13,4 @@ instance IsSome String Data.Text.Lazy.Builder.Builder where
   maybeFrom = fmap Data.Text.Lazy.Builder.fromText . maybeFrom
 
 instance IsMany String Data.Text.Lazy.Builder.Builder where
-  from = fromString
+  onfrom = fromString

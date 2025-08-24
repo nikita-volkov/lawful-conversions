@@ -23,6 +23,12 @@ import LawfulConversions.Prelude
 --
 -- > \b -> maybeFrom (to @a b) == Just b
 --
+-- ==== 'maybeFrom' characterizes the image of 'to'
+--
+-- 'maybeFrom' succeeds exactly on values that are in the image of 'to':
+--
+-- > \a b -> maybeFrom a == Just b ==> to b == a
+--
 -- === Testing
 --
 -- For testing whether your instances conform to these laws use 'LawfulConversions.isSomeProperties'.
@@ -76,6 +82,12 @@ from = to
 -- ==== 'onfrom' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'to'
 --
 -- > \b -> b == onfrom (to @a b)
+--
+-- ==== 'onfrom' is [surjective](https://en.wikipedia.org/wiki/Surjective_function)
+--
+-- Every value of type @b@ can be obtained by applying 'onfrom' to some value of type @a@:
+--
+-- > \b -> exists a. onfrom a == b
 --
 -- === Testing
 --

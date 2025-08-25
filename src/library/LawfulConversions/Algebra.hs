@@ -84,9 +84,7 @@ from = to
 -- > maybeToInt16 :: Int32 -> Maybe Int16
 -- > maybeToInt16 = maybeTo @Int16
 --
--- E.g.,
---
--- > result = maybeTo @Percent someDouble
+-- > percent = maybeTo @Percent someDouble
 maybeTo :: forall b a. (IsSome a b) => a -> Maybe b
 maybeTo = maybeFrom
 

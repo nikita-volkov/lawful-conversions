@@ -77,11 +77,11 @@ from = to
 -- Try to convert a value of a superset type to a subset type specifying the target subset type first.
 --
 -- Alias to 'maybeFrom' with the only difference in the argument order.
--- 
+--
 -- Particularly useful in combination with the @TypeApplications@ extension,
 -- where it allows to specify the target type, e.g.:
 --
--- > maybeToInt16 :: Int32 -> Maybe Int16  
+-- > maybeToInt16 :: Int32 -> Maybe Int16
 -- > maybeToInt16 = maybeTo @Int16
 --
 -- E.g.,

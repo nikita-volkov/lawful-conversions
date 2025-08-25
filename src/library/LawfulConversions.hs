@@ -15,7 +15,7 @@
 -- > to @String :: IsSome String b => b -> String
 --
 -- > > :t from @Text
--- > from @Text :: IsMany Text b => Text -> b
+-- > from @Text :: IsSome a Text => Text -> a
 --
 -- In other words 'to' and 'from' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type

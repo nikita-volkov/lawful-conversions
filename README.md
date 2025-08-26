@@ -1,50 +1,127 @@
-# Summary
+# Lawful Conversions
 
-Lawful typeclasses capturing three patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
+[![Hackage](https://img.shields.io/hackage/v/lawful-conversions.svg)](https://hackage.haskell.org/package/lawful-conversions)
+[![Continuous Haddock](https://img.shields.io/badge/haddock-master-blue)](https://nikita-volkov.github.io/lawful-conversions)
 
-1. Smart constructor
+A Haskell library providing **lawful typeclasses for bidirectional type conversions**, grounded in mathematical principles from set theory and category theory.
 
-2. Canonicalization or lossy conversion
+## Core Concept
 
-3. Isomorphism or lossless conversion
+This library defines a precise hierarchy of three conversion patterns with increasing mathematical strictness:
 
-## The conversion problem
+1. **Smart Constructor** (`IsSome`) - Subset embedding with partial inverse
+2. **Canonicalization** (`IsMany`) - Many-to-one lossy conversion  
+3. **Isomorphism** (`Is`) - Bidirectional lossless conversion
 
-Have you ever looked for a `toString` function? How often do you
-import `Data.Text.Lazy` only to call its `fromStrict`? How
-about importing `Data.ByteString.Builder` only to call its
-`toLazyByteString` and then importing
-`Data.ByteString.Lazy` only to call its `toStrict`?
+Each typeclass comes with **mathematical laws** and **property-based tests** to ensure correctness and consistency across all instances.
 
-Those all are instances of one pattern. They are conversions between different
-representations of the same information. Codebases that don't attempt to
-abstract over this pattern tend to be sprawling with this type of
-boilerplate. It's noise to the codereader, it's a burden to the
-implementor and the maintainer.
+## The Problem: Conversion Boilerplate
 
-## Why another conversion library?
+Have you ever found yourself writing code like this?
 
-Many libraries exist that approach the conversion problem. However most of
-them provide lawless typeclasses leaving it up to the author of the
-instance to define what makes a proper conversion. This results in
-inconsistencies across instances, their behaviour not being evident to
-the user and no way to check whether an instance is correct.
+```haskell
+import qualified Data.Text.Lazy as LT
+import qualified Data.Text.Encoding as TE
+import qualified Data.ByteString.Builder as BB
+import qualified Data.ByteString.Lazy as LBS
 
-This library tackles this problem with a lawful typeclass hierarchy, making it
-evident what any of its instances do and it provides property-tests for you
-to validate your instances.
+-- Converting between different representations
+result = LBS.toStrict $ BB.toLazyByteString $ 
+         BB.byteString $ TE.encodeUtf8 $ LT.toStrict input
+```
 
-# Documentation
+These are all instances of the same fundamental pattern: **converting between different representations of the same information**. Without proper abstraction, codebases become littered with this boilerplate, creating noise for readers and maintenance burden for developers.
 
-- [Haddocks for the latest commit on `master`](https://nikita-volkov.github.io/lawful-conversions)
-- [Haddocks for releases on Hackage](https://hackage.haskell.org/package/lawful-conversions)
+## Why Lawful Conversions?
 
-# Prior work and acknowledgements
+Many conversion libraries exist, but most provide **lawless typeclasses** that leave correctness up to instance authors. This leads to:
 
-This library is an offspring of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. Both libraries are maintained letting their designs compete.
+- **Inconsistent behavior** across instances
+- **Unpredictable semantics** for library users  
+- **No verification** that instances are correct
 
-Some ideas and concepts are also shared with the following libraries:
+**Lawful Conversions** solves these problems with:
 
-- [control-iso](https://hackage.haskell.org/package/control-iso)
-- [type-iso](https://hackage.haskell.org/package/type-iso)
-- [injections](https://hackage.haskell.org/package/injections)
+- ✅ **Mathematical rigor** - Laws based on set theory and category theory
+- ✅ **Property-based testing** - Automated verification of law compliance
+- ✅ **Clear semantics** - Predictable behavior across all instances
+- ✅ **Type safety** - Compile-time guarantees about conversion relationships
+
+## Quick Start
+
+```haskell
+{-# LANGUAGE TypeApplications #-}
+import LawfulConversions
+
+-- Merge various inputs into a bytestring using builder.
+combineEncodings ::
+  [Word8] ->
+  Data.ByteString.Lazy.ByteString ->
+  Data.ByteString.Short.ShortByteString ->
+  Data.Primitive.ByteArray ->
+  Data.ByteString.ByteString
+combineEncodings a b c d =
+  from @Data.ByteString.Builder.Builder $
+    to a <> to b <> to c <> to d
+
+-- Partial conversion with failure handling
+maybePercent :: Maybe Percent
+maybePercent = maybeFrom @Double 0.75  -- Just (Percent 0.75)
+
+badPercent :: Maybe Percent  
+badPercent = maybeFrom @Double 1.5     -- Nothing (out of range)
+```
+
+## Typeclass Hierarchy
+
+### `IsSome a b` - Smart Constructor Pattern
+Evidence that type `b` is a **subset** of type `a`:
+- `to :: b -> a` (total injection)
+- `maybeFrom :: a -> Maybe b` (partial inverse)
+- **Law**: Injectivity and partial inverse relationship
+
+### `IsMany a b` - Canonicalization Pattern  
+Evidence that type `a` can be **canonicalized** to type `b`:
+- `onfrom :: a -> b` (total surjection)
+- **Law**: Consistent with subset relationships
+
+### `Is a b` - Isomorphism Pattern
+Evidence that types `a` and `b` are **isomorphic**:
+- Combines both `IsSome` and `IsMany`
+- **Law**: `to` and `from` are total inverses
+
+## Supported Type Conversions
+
+The library includes instances for common Haskell types:
+
+- **Text types**: `String` ↔ `Text` ↔ `LazyText` ↔ `Builder`
+- **ByteString types**: `ByteString` ↔ `LazyByteString` ↔ `ShortByteString` ↔ `ByteArray`
+- **Numeric types**: `Int8` ↔ `Word8`, `Int16` ↔ `Word16`, etc.
+- **Collections**: `Vector` ↔ `List` ↔ `Seq`, `IntMap` ↔ `Map Int`
+
+All instances are **mathematically verified** through property-based testing.
+
+## Documentation
+
+- 📚 [**API Documentation**](https://hackage.haskell.org/package/lawful-conversions) - Complete Haddock documentation on Hackage
+- 🔧 [**Development Docs**](https://nikita-volkov.github.io/lawful-conversions) - Latest documentation from `master` branch
+
+## Related Libraries & Prior Work
+
+This library builds upon and competes with several existing conversion libraries:
+
+- **[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)** - The predecessor library that inspired this work
+- **[control-iso](https://hackage.haskell.org/package/control-iso)** - Control structure isomorphisms  
+- **[type-iso](https://hackage.haskell.org/package/type-iso)** - Type-level isomorphisms
+- **[injections](https://hackage.haskell.org/package/injections)** - Injection-focused conversions
+
+**Key differentiator**: Lawful Conversions provides a complete mathematical foundation with property-based verification, ensuring correctness and predictability across all instances.
+
+## Contributing
+
+This library prioritizes **mathematical correctness** and **comprehensive testing**. When contributing:
+
+1. Ensure all instances satisfy mathematical laws
+2. Add property-based tests for new conversions  
+3. Follow the established module structure under `Relations/`
+4. Maintain compatibility across supported versions of GHC and libraries

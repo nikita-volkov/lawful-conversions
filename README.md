@@ -34,6 +34,11 @@ This library tackles this problem with a lawful typeclass hierarchy, making it
 evident what any of its instances do and it provides property-tests for you
 to validate your instances.
 
+# Documentation
+
+- [Haddocks for the latest commit on `master`](https://nikita-volkov.github.io/lawful-conversions)
+- [Haddocks for releases on Hackage](https://hackage.haskell.org/package/lawful-conversions)
+
 # Prior work and acknowledgements
 
 This library is an offspring of the "[isomorphism-class](https://hackage.haskell.org/package/isomorphism-class)" library, expanding upon the patterns discovered there. Both libraries are maintained letting their designs compete.

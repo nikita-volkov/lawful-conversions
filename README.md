@@ -8,7 +8,7 @@ Lawful typeclasses capturing three patterns of bidirectional mapping and forming
 
 3. Isomorphism or lossless conversion
 
-# The conversion problem
+## The conversion problem
 
 Have you ever looked for a `toString` function? How often do you
 import `Data.Text.Lazy` only to call its `fromStrict`? How
@@ -22,7 +22,7 @@ abstract over this pattern tend to be sprawling with this type of
 boilerplate. It's noise to the codereader, it's a burden to the
 implementor and the maintainer.
 
-# Why another conversion library?
+## Why another conversion library?
 
 Many libraries exist that approach the conversion problem. However most of
 them provide lawless typeclasses leaving it up to the author of the

@@ -1,7 +1,7 @@
 # Lawful Conversions
 
 [![Hackage](https://img.shields.io/hackage/v/lawful-conversions.svg)](https://hackage.haskell.org/package/lawful-conversions)
-[![Continuous Haddock](https://img.shields.io/badge/haddock-master-blue)](https://nikita-volkov.github.io/lawful-conversions)
+[![Continuous Haddock](https://img.shields.io/badge/haddock-master-blue)](https://nikita-volkov.github.io/lawful-conversions/)
 
 A Haskell library providing **lawful typeclasses for bidirectional type conversions**, grounded in mathematical principles from set theory and category theory.
 
@@ -104,7 +104,7 @@ All instances are **mathematically verified** through property-based testing.
 ## Documentation
 
 - 📚 [**API Documentation**](https://hackage.haskell.org/package/lawful-conversions) - Complete Haddock documentation on Hackage
-- 🔧 [**Development Docs**](https://nikita-volkov.github.io/lawful-conversions) - Latest documentation from `master` branch
+- 🔧 [**Development Docs**](https://nikita-volkov.github.io/lawful-conversions/) - Latest documentation from `master` branch
 
 ## Related Libraries & Prior Work
 

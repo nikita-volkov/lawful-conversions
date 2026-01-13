@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.3.0.2
+version: 0.3.0.3
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -181,7 +181,7 @@ test-suite test
     bytestring >=0.11.1.0 && <0.13,
     lawful-conversions,
     primitive >=0.7 && <0.10,
-    quickcheck-instances >=0.3.32 && <0.4,
+    quickcheck-instances >=0.3.32 && <0.5,
     rebase >=1.15 && <2,
     tasty >=1.2.3 && <2,
     tasty-quickcheck >=0.11 && <0.12,

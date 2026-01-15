@@ -1,5 +1,6 @@
 module LawfulConversions.Relations () where
 
+import LawfulConversions.Relations.Any ()
 import LawfulConversions.Relations.BoxedVectorAndList ()
 import LawfulConversions.Relations.BoxedVectorAndSeq ()
 import LawfulConversions.Relations.ByteArrayAndByteString ()
@@ -62,3 +63,4 @@ import LawfulConversions.Relations.StringAndUuid ()
 import LawfulConversions.Relations.TextAndUtcTime ()
 import LawfulConversions.Relations.TextAndUuid ()
 import LawfulConversions.Relations.TextArrayAndWord8List ()
+import LawfulConversions.Relations.Void ()

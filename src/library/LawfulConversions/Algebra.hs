@@ -52,16 +52,6 @@ class IsSome a b where
   default maybeFrom :: (IsSome b a) => a -> Maybe b
   maybeFrom = Just . to
 
--- | Every type is isomorphic to itself.
-instance IsSome a a where
-  to = id
-  maybeFrom = Just . id
-
--- | The empty set has no elements, and therefore is vacuously a subset of any set.
-instance IsSome a Void where
-  to = absurd
-  maybeFrom = const Nothing
-
 -- |
 -- Convert a value of a superset type to a subset type specifying the superset type first.
 --
@@ -158,8 +148,6 @@ class (IsSome a b) => IsMany a b where
 onto :: forall b a. (IsMany a b) => a -> b
 onto = onfrom
 
-instance IsMany a a
-
 -- | Bidirectional conversion between two types with no loss of information.
 --
 -- The bidirectionality is encoded via a recursive dependency with arguments
@@ -220,6 +208,3 @@ instance IsMany a a
 -- instance Is "Data.Text.Text" "Data.Text.Lazy.LazyText"
 -- @
 class (IsMany a b, Is b a) => Is a b
-
--- | Any type is isomorphic to itself.
-instance Is a a

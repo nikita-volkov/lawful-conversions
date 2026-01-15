@@ -92,6 +92,7 @@ library
     LawfulConversions.Proxies
     LawfulConversions.Proxies.ViaIsSome
     LawfulConversions.Relations
+    LawfulConversions.Relations.Any
     LawfulConversions.Relations.BoxedVectorAndList
     LawfulConversions.Relations.BoxedVectorAndSeq
     LawfulConversions.Relations.ByteArrayAndByteString
@@ -154,6 +155,7 @@ library
     LawfulConversions.Relations.TextAndUtcTime
     LawfulConversions.Relations.TextAndUuid
     LawfulConversions.Relations.TextArrayAndWord8List
+    LawfulConversions.Relations.Void
     LawfulConversions.TextCompat.Array
 
   build-depends:

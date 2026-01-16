@@ -14,9 +14,10 @@ import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.DayAndString ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictTextBuilder Day where
+instance NormalizesTo Data.Text.Encoding.StrictTextBuilder Day where
   to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (ModifiedJulianDay 0) . maybeFrom @String . to
 
 #elif MIN_VERSION_text(2,0,2)
 
@@ -29,8 +30,9 @@ import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.DayAndString ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictBuilder Day where
+instance NormalizesTo Data.Text.Encoding.StrictBuilder Day where
   to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (ModifiedJulianDay 0) . maybeFrom @String . to
 
 #endif

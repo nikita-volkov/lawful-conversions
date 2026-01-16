@@ -6,15 +6,11 @@ import qualified Data.Sequence
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome [a] (Seq a) where
+instance NormalizesTo [a] (Seq a) where
   to = toList
 
-instance IsSome (Seq a) [a] where
+instance NormalizesTo (Seq a) [a] where
   to = Data.Sequence.fromList
-
-instance IsMany [a] (Seq a)
-
-instance IsMany (Seq a) [a]
 
 instance Is [a] (Seq a)
 

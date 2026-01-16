@@ -10,10 +10,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | UTF-8 codec.
-instance IsSome ByteString Data.Text.Lazy.Text where
+instance NormalizesTo ByteString Data.Text.Lazy.Text where
   to = Data.ByteString.Lazy.toStrict . Data.Text.Lazy.Encoding.encodeUtf8
   maybeFrom = either (const Nothing) Just . Data.Text.Lazy.Encoding.decodeUtf8' . Data.ByteString.Lazy.fromStrict
-
--- | Lenient UTF-8 decoding.
-instance IsMany ByteString Data.Text.Lazy.Text where
   onfrom = Data.Text.Lazy.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode . Data.ByteString.Lazy.fromStrict

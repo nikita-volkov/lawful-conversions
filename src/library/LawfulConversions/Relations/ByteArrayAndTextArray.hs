@@ -11,15 +11,11 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 
-instance IsSome Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
+instance NormalizesTo Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
   to = LawfulConversions.TextCompat.Array.toByteArray
 
-instance IsSome Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
+instance NormalizesTo Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
   to = LawfulConversions.TextCompat.Array.fromByteArray
-
-instance IsMany Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
-
-instance IsMany Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray
 
 instance Is Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array
 

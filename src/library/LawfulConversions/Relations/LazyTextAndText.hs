@@ -6,15 +6,11 @@ import qualified Data.Text.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome Data.Text.Lazy.Text Text where
+instance NormalizesTo Data.Text.Lazy.Text Text where
   to = Data.Text.Lazy.fromStrict
 
-instance IsSome Text Data.Text.Lazy.Text where
+instance NormalizesTo Text Data.Text.Lazy.Text where
   to = Data.Text.Lazy.toStrict
-
-instance IsMany Data.Text.Lazy.Text Text
-
-instance IsMany Text Data.Text.Lazy.Text
 
 instance Is Data.Text.Lazy.Text Text
 

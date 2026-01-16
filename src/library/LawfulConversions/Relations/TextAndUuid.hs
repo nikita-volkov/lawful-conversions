@@ -6,6 +6,7 @@ import qualified Data.UUID.Types as Uuid
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome Text UUID where
+instance NormalizesTo Text UUID where
   to = Uuid.toText
   maybeFrom = Uuid.fromText
+  onfrom = fromMaybe Uuid.nil . Uuid.fromText

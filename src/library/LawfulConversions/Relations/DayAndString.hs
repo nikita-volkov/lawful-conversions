@@ -8,6 +8,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | Implements ISO-8601.
-instance IsSome String Day where
+instance NormalizesTo String Day where
   to = iso8601Show
   maybeFrom = iso8601ParseM
+  onfrom = fromMaybe (ModifiedJulianDay 0) . iso8601ParseM

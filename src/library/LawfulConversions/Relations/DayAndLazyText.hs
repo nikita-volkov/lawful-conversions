@@ -10,6 +10,7 @@ import LawfulConversions.Relations.DayAndString ()
 import LawfulConversions.Relations.LazyTextAndString ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Lazy.Text Day where
+instance NormalizesTo Data.Text.Lazy.Text Day where
   to = fromString . to
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (ModifiedJulianDay 0) . maybeFrom @String . to

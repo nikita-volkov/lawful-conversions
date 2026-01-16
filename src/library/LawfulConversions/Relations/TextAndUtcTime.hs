@@ -9,6 +9,7 @@ import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
 -- | Implements ISO-8601.
-instance IsSome Text UTCTime where
+instance NormalizesTo Text UTCTime where
   to = fromString . to
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (UTCTime (ModifiedJulianDay 0) 0) . maybeFrom @String . to

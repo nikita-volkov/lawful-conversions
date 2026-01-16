@@ -6,7 +6,7 @@ import qualified Data.Text as Text
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome String Text where
+instance NormalizesTo String Text where
   to = Text.unpack
   maybeFrom string =
     -- FIXME: Optimize.
@@ -14,6 +14,4 @@ instance IsSome String Text where
      in if string == Text.unpack text
           then Just text
           else Nothing
-
-instance IsMany String Text where
   onfrom = Text.pack

@@ -5,15 +5,11 @@ module LawfulConversions.Relations.IntSetAndSetOfInt where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome (Set Int) IntSet where
+instance NormalizesTo (Set Int) IntSet where
   to = fromList . toList
 
-instance IsSome IntSet (Set Int) where
+instance NormalizesTo IntSet (Set Int) where
   to = fromList . toList
-
-instance IsMany (Set Int) IntSet
-
-instance IsMany IntSet (Set Int)
 
 instance Is (Set Int) IntSet
 

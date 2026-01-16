@@ -6,15 +6,11 @@ import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra
 
-instance IsSome Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder where
+instance NormalizesTo Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder where
   to = Data.ByteString.Builder.toLazyByteString
 
-instance IsSome Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString where
+instance NormalizesTo Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString where
   to = Data.ByteString.Builder.lazyByteString
-
-instance IsMany Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder
-
-instance IsMany Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString
 
 instance Is Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder
 

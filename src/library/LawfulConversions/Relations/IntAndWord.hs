@@ -5,15 +5,11 @@ module LawfulConversions.Relations.IntAndWord where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome Int Word where
+instance NormalizesTo Int Word where
   to = fromIntegral
 
-instance IsSome Word Int where
+instance NormalizesTo Word Int where
   to = fromIntegral
-
-instance IsMany Int Word
-
-instance IsMany Word Int
 
 instance Is Int Word
 

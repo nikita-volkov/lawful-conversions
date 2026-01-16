@@ -6,15 +6,11 @@ import qualified Data.Vector
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome (Vector a) [a] where
+instance NormalizesTo (Vector a) [a] where
   to = Data.Vector.fromList
 
-instance IsSome [a] (Vector a) where
+instance NormalizesTo [a] (Vector a) where
   to = Data.Vector.toList
-
-instance IsMany (Vector a) [a]
-
-instance IsMany [a] (Vector a)
 
 instance Is (Vector a) [a]
 

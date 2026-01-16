@@ -14,9 +14,10 @@ import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictTextBuilder UTCTime where
+instance NormalizesTo Data.Text.Encoding.StrictTextBuilder UTCTime where
   to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (UTCTime (ModifiedJulianDay 0) 0) . maybeFrom @String . to
 
 #elif MIN_VERSION_text(2,0,2)
 
@@ -29,8 +30,9 @@ import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Relations.StringAndUtcTime ()
 
 -- | Implements ISO-8601.
-instance IsSome Data.Text.Encoding.StrictBuilder UTCTime where
+instance NormalizesTo Data.Text.Encoding.StrictBuilder UTCTime where
   to = onfrom . to @String
   maybeFrom = maybeFrom @String . to
+  onfrom = fromMaybe (UTCTime (ModifiedJulianDay 0) 0) . maybeFrom @String . to
 
 #endif

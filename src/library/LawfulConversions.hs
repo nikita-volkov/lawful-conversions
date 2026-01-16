@@ -12,10 +12,10 @@
 -- The types should be self-evident:
 --
 -- > > :t to @String
--- > to @String :: IsSome String b => b -> String
+-- > to @String :: NormalizesTo String b => b -> String
 --
 -- > > :t from @Text
--- > from @Text :: IsSome a Text => Text -> a
+-- > from @Text :: NormalizesTo a Text => Text -> a
 --
 -- In other words 'to' and 'from' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type
@@ -32,7 +32,9 @@
 --
 -- = Partial conversions
 --
--- This library also captures the pattern of smart constructors via the 'IsSome' class, which associates a total 'to' conversion with its partial inverse 'maybeFrom'.
+-- This library also captures the pattern of smart constructors via the 'NormalizesTo' class,
+-- which associates a total 'to' conversion with its partial inverse 'maybeFrom', as well as
+-- a potentially lossy normalization function 'onfrom'.
 --
 -- This captures the codec relationship between types.
 -- E.g.,
@@ -55,16 +57,12 @@
 -- >
 -- > newtype Percent = Percent Double
 -- >
--- > instance IsSome Double Percent where
+-- > instance NormalizesTo Double Percent where
 -- >   to (Percent double) = double
 -- >   maybeFrom double =
 -- >     if double < 0 || double > 1
 -- >       then Nothing
 -- >       else Just (Percent double)
---
--- You can also expand upon that and provide a default handling of invalid values effectively providing a lossy canonicalizing conversion ([Surjection](https://en.wikipedia.org/wiki/Surjective_function)):
---
--- > instance IsMany Double Percent where
 -- >   onfrom double =
 -- >     if double < 0
 -- >       then Percent 0
@@ -76,8 +74,7 @@
 -- Namely, while every @Percent@ value can be losslessly transformed into 'Double', not every 'Double' can be losslessly transformed into @Percent@.
 module LawfulConversions
   ( -- * Typeclasses
-    IsSome (..),
-    IsMany (..),
+    NormalizesTo (..),
     Is,
 
     -- * Combinators
@@ -86,8 +83,8 @@ module LawfulConversions
     onto,
 
     -- * Optics
-    isSomePrism,
-    isManyIso,
+    normalizesToPrism,
+    normalizesToIso,
     isIso,
 
     -- * Instance derivation

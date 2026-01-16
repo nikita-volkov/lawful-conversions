@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra

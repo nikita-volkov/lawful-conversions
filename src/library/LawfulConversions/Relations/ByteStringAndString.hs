@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.ByteStringAndString where
 
+import Data.ByteString (ByteString)
 import qualified Data.Text
 import qualified Data.Text.Encoding
 import qualified Data.Text.Encoding.Error

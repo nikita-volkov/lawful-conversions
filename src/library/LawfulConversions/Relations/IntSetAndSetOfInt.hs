@@ -2,6 +2,8 @@
 
 module LawfulConversions.Relations.IntSetAndSetOfInt where
 
+import Data.IntSet (IntSet)
+import Data.Set (Set)
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 

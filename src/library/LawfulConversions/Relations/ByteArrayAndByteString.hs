@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.ByteArrayAndByteString where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString.Short
 import qualified Data.Primitive.ByteArray
 import LawfulConversions.Algebra

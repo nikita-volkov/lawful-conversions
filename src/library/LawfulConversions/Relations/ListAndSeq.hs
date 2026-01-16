@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.ListAndSeq where
 
+import Data.Sequence (Seq)
 import qualified Data.Sequence
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude

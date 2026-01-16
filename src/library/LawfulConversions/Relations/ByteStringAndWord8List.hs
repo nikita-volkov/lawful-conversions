@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.ByteStringAndWord8List where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude

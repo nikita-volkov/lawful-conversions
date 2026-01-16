@@ -2,7 +2,9 @@
 
 module LawfulConversions.Relations.BoxedVectorAndSeq where
 
+import Data.Sequence (Seq)
 import qualified Data.Sequence
+import Data.Vector (Vector)
 import qualified Data.Vector
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude

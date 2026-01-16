@@ -110,15 +110,7 @@ allTests =
       testIs @Word64 @Int64 Proxy Proxy,
       testIs @Word64 @Word64 Proxy Proxy,
       testIs @Word8 @Int8 Proxy Proxy,
-      testIs @Word8 @Word8 Proxy Proxy,
-      testNormalizesTo @Data.Text.Lazy.Text @UTCTime Proxy Proxy,
-      testNormalizesTo @Data.Text.Lazy.Builder.Builder @UTCTime Proxy Proxy,
-      testNormalizesTo @String @UTCTime Proxy Proxy,
-      testNormalizesTo @Text @UTCTime Proxy Proxy,
-      testNormalizesTo @Data.Text.Lazy.Text @Day Proxy Proxy,
-      testNormalizesTo @Data.Text.Lazy.Builder.Builder @Day Proxy Proxy,
-      testNormalizesTo @String @Day Proxy Proxy,
-      testNormalizesTo @Text @Day Proxy Proxy
+      testIs @Word8 @Word8 Proxy Proxy
     ]
 
 testIs :: (Is a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree

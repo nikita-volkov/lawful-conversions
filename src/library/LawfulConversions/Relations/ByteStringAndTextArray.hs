@@ -5,6 +5,7 @@ module LawfulConversions.Relations.ByteStringAndTextArray where
 
 #if !MIN_VERSION_text(2,1,0)
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString.Short
 import qualified Data.Text.Array
 import LawfulConversions.Algebra

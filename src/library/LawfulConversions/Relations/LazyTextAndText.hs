@@ -2,6 +2,7 @@
 
 module LawfulConversions.Relations.LazyTextAndText where
 
+import Data.Text (Text)
 import qualified Data.Text.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude

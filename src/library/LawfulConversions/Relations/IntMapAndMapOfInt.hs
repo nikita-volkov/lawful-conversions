@@ -2,7 +2,9 @@
 
 module LawfulConversions.Relations.IntMapAndMapOfInt where
 
+import Data.IntMap.Strict (IntMap)
 import qualified Data.IntMap.Strict
+import Data.Map.Strict (Map)
 import qualified Data.Map.Strict
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude

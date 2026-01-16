@@ -8,6 +8,7 @@ module LawfulConversions.Relations.StrictTextBuilderAndText where
 import qualified Data.Text.Encoding
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
+import Data.Text (Text)
 
 instance NormalizesTo Text Data.Text.Encoding.StrictTextBuilder where
   to = Data.Text.Encoding.strictBuilderToText
@@ -20,6 +21,7 @@ instance NormalizesTo Data.Text.Encoding.StrictTextBuilder Text where
 import qualified Data.Text.Encoding
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
+import Data.Text (Text)
 
 instance NormalizesTo Text Data.Text.Encoding.StrictBuilder where
   to = Data.Text.Encoding.strictBuilderToText

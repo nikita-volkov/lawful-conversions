@@ -53,7 +53,7 @@ class IsSome a b where
   maybeFrom = Just . to
 
 -- |
--- Convert a value of a superset type to a subset type specifying the superset type first.
+-- Convert a value of a subset type to a superset type, specifying the source subset type first.
 --
 -- Alias to 'to' with the only difference in the argument order.
 --
@@ -98,7 +98,7 @@ maybeTo = maybeFrom
 --
 -- Every value of type @b@ can be obtained by applying 'onfrom' to some value of type @a@:
 --
--- > \b -> exists a. onfrom @b a == b
+-- > \b -> exists a. onfrom @a @b a == b
 --
 -- Note: This property cannot be directly tested with QuickCheck as it requires existential quantification.
 --
@@ -161,13 +161,13 @@ onto = onfrom
 --
 -- For all values of /b/ converting from /b/ to /a/ and then converting from /a/ to /b/ produces the original value:
 --
--- > \b -> b == from @b (to @a b)
+-- > \b -> b == from @a (to @a b)
 --
 -- ==== 'to' is an [inverse](https://en.wikipedia.org/wiki/Inverse_function) of 'from'
 --
 -- For all values of /a/ converting from /a/ to /b/ and then converting from /b/ to /a/ produces the original value:
 --
--- > \a -> a == to @a (from @b a)
+-- > \a -> a == to @a (from @a @b a)
 --
 -- ==== Mathematical relationship
 --
@@ -178,7 +178,7 @@ onto = onfrom
 --
 -- For isomorphic types, both ways of converting should be equivalent:
 --
--- > \a -> from @b @a a == onfrom @a @b a
+-- > \a -> from @a @b a == onfrom @a @b a
 --
 -- === Testing
 --

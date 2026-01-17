@@ -2,17 +2,16 @@
 
 module LawfulConversions.Relations.LazyTextAndText where
 
-import Data.Text (Text)
+import qualified Data.Text
 import qualified Data.Text.Lazy
 import LawfulConversions.Algebra
-import LawfulConversions.Prelude
 
-instance IsSupersetOf Data.Text.Lazy.Text Text where
+instance IsSupersetOf Data.Text.Lazy.Text Data.Text.Text where
   to = Data.Text.Lazy.fromStrict
 
-instance IsSupersetOf Text Data.Text.Lazy.Text where
+instance IsSupersetOf Data.Text.Text Data.Text.Lazy.Text where
   to = Data.Text.Lazy.toStrict
 
-instance Is Data.Text.Lazy.Text Text
+instance Is Data.Text.Lazy.Text Data.Text.Text
 
-instance Is Text Data.Text.Lazy.Text
+instance Is Data.Text.Text Data.Text.Lazy.Text

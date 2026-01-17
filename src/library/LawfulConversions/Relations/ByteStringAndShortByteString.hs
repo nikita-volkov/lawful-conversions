@@ -5,7 +5,6 @@ module LawfulConversions.Relations.ByteStringAndShortByteString where
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Short
 import LawfulConversions.Algebra
-import LawfulConversions.Prelude
 
 instance IsSupersetOf ByteString Data.ByteString.Short.ShortByteString where
   to = Data.ByteString.Short.fromShort

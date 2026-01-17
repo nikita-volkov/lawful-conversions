@@ -5,7 +5,6 @@ module LawfulConversions.Relations.BoxedVectorAndList where
 import Data.Vector (Vector)
 import qualified Data.Vector
 import LawfulConversions.Algebra
-import LawfulConversions.Prelude
 
 instance IsSupersetOf (Vector a) [a] where
   to = Data.Vector.fromList

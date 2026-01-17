@@ -138,7 +138,6 @@ library
     LawfulConversions.Relations.StrictTextBuilderAndText
     LawfulConversions.Relations.StringAndText
     LawfulConversions.Relations.TextArrayAndWord8List
-    LawfulConversions.Relations.Void
     LawfulConversions.TextCompat.Array
 
   build-depends:

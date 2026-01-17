@@ -1,5 +1,5 @@
 module LawfulConversions.Properties
-  ( normalizesToProperties,
+  ( isSupersetOfProperties,
     isProperties,
   )
 where
@@ -9,24 +9,24 @@ import LawfulConversions.Prelude
 import Test.QuickCheck
 
 -- |
--- Properties testing whether an instance satisfies the laws of 'NormalizesTo'.
+-- Properties testing whether an instance satisfies the laws of 'IsSupersetOf'.
 --
 -- The instance is identified via the proxy types that you provide.
 --
 -- E.g., here's how you can integrate it into an Hspec test-suite:
 --
 -- > spec = do
--- >   describe "NormalizesTo laws" do
+-- >   describe "IsSupersetOf laws" do
 -- >     traverse_
 -- >       (uncurry prop)
--- >       (normalizesToProperties @Int32 @Int16 Proxy Proxy)
-normalizesToProperties ::
+-- >       (isSupersetOfProperties @Int32 @Int16 Proxy Proxy)
+isSupersetOfProperties ::
   forall a b.
-  (NormalizesTo a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
+  (IsSupersetOf a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
-normalizesToProperties aProxy bProxy =
+isSupersetOfProperties aProxy bProxy =
   [ ( "'to' is injective",
       property \b1 b2 ->
         b1 /= b2 ==>
@@ -86,7 +86,7 @@ isProperties aProxy bProxy =
       property \a -> from' a === onfrom' a
     )
   ]
-    <> normalizesToProperties aProxy bProxy
+    <> isSupersetOfProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
     from' = as bProxy . from . as aProxy

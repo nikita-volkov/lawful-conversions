@@ -10,10 +10,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import Data.Text (Text)
 
-instance NormalizesTo Text Data.Text.Encoding.StrictTextBuilder where
+instance IsSupersetOf Text Data.Text.Encoding.StrictTextBuilder where
   to = Data.Text.Encoding.strictBuilderToText
 
-instance NormalizesTo Data.Text.Encoding.StrictTextBuilder Text where
+instance IsSupersetOf Data.Text.Encoding.StrictTextBuilder Text where
   to = Data.Text.Encoding.textToStrictBuilder
 
 #elif MIN_VERSION_text(2,0,2)
@@ -23,10 +23,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import Data.Text (Text)
 
-instance NormalizesTo Text Data.Text.Encoding.StrictBuilder where
+instance IsSupersetOf Text Data.Text.Encoding.StrictBuilder where
   to = Data.Text.Encoding.strictBuilderToText
 
-instance NormalizesTo Data.Text.Encoding.StrictBuilder Text where
+instance IsSupersetOf Data.Text.Encoding.StrictBuilder Text where
   to = Data.Text.Encoding.textToStrictBuilder
 
 #endif

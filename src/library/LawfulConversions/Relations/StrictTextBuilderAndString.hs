@@ -10,7 +10,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Prelude
 
-instance NormalizesTo String Data.Text.Encoding.StrictTextBuilder where
+instance IsSupersetOf String Data.Text.Encoding.StrictTextBuilder where
   to = to . Data.Text.Encoding.strictBuilderToText
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
   onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom
@@ -22,7 +22,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Prelude
 
-instance NormalizesTo String Data.Text.Encoding.StrictBuilder where
+instance IsSupersetOf String Data.Text.Encoding.StrictBuilder where
   to = to . Data.Text.Encoding.strictBuilderToText
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
   onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom

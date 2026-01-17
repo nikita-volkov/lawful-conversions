@@ -6,7 +6,7 @@ import qualified Data.Text as Text
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo String Text.Text where
+instance IsSupersetOf String Text.Text where
   to = Text.unpack
   maybeFrom string =
     -- FIXME: Optimize.

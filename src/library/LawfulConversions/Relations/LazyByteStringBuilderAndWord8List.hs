@@ -7,10 +7,10 @@ import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo Data.ByteString.Builder.Builder [Word8] where
+instance IsSupersetOf Data.ByteString.Builder.Builder [Word8] where
   to = Data.ByteString.Builder.lazyByteString . Data.ByteString.Lazy.pack
 
-instance NormalizesTo [Word8] Data.ByteString.Builder.Builder where
+instance IsSupersetOf [Word8] Data.ByteString.Builder.Builder where
   to = Data.ByteString.Lazy.unpack . Data.ByteString.Builder.toLazyByteString
 
 instance Is Data.ByteString.Builder.Builder [Word8]

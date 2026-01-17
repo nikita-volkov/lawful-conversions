@@ -10,10 +10,10 @@ import LawfulConversions.Prelude
 import LawfulConversions.Relations.ByteArrayAndShortByteString ()
 import LawfulConversions.Relations.LazyByteStringAndShortByteString ()
 
-instance NormalizesTo Data.ByteString.Lazy.ByteString Data.Primitive.ByteArray.ByteArray where
+instance IsSupersetOf Data.ByteString.Lazy.ByteString Data.Primitive.ByteArray.ByteArray where
   to = to . to @Data.ByteString.Short.ShortByteString
 
-instance NormalizesTo Data.Primitive.ByteArray.ByteArray Data.ByteString.Lazy.ByteString where
+instance IsSupersetOf Data.Primitive.ByteArray.ByteArray Data.ByteString.Lazy.ByteString where
   to = to . to @Data.ByteString.Short.ShortByteString
 
 instance Is Data.Primitive.ByteArray.ByteArray Data.ByteString.Lazy.ByteString

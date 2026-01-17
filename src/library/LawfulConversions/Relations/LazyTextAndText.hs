@@ -7,10 +7,10 @@ import qualified Data.Text.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo Data.Text.Lazy.Text Text where
+instance IsSupersetOf Data.Text.Lazy.Text Text where
   to = Data.Text.Lazy.fromStrict
 
-instance NormalizesTo Text Data.Text.Lazy.Text where
+instance IsSupersetOf Text Data.Text.Lazy.Text where
   to = Data.Text.Lazy.toStrict
 
 instance Is Data.Text.Lazy.Text Text

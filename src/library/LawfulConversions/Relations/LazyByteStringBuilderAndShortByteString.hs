@@ -8,10 +8,10 @@ import qualified Data.ByteString.Short
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo Data.ByteString.Builder.Builder Data.ByteString.Short.ShortByteString where
+instance IsSupersetOf Data.ByteString.Builder.Builder Data.ByteString.Short.ShortByteString where
   to = Data.ByteString.Builder.shortByteString
 
-instance NormalizesTo Data.ByteString.Short.ShortByteString Data.ByteString.Builder.Builder where
+instance IsSupersetOf Data.ByteString.Short.ShortByteString Data.ByteString.Builder.Builder where
   to = Data.ByteString.Short.toShort . Data.ByteString.Lazy.toStrict . Data.ByteString.Builder.toLazyByteString
   maybeFrom = Just . Data.ByteString.Builder.shortByteString
 

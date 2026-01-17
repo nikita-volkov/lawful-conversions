@@ -12,10 +12,10 @@
 -- The types should be self-evident:
 --
 -- > > :t to @String
--- > to @String :: NormalizesTo String b => b -> String
+-- > to @String :: IsSupersetOf String b => b -> String
 --
 -- > > :t from @Text
--- > from @Text :: NormalizesTo a Text => Text -> a
+-- > from @Text :: IsSupersetOf a Text => Text -> a
 --
 -- In other words 'to' and 'from' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type
@@ -32,7 +32,7 @@
 --
 -- = Partial conversions
 --
--- This library also captures the pattern of smart constructors via the 'NormalizesTo' class,
+-- This library also captures the pattern of smart constructors via the 'IsSupersetOf' class,
 -- which associates a total 'to' conversion with its partial inverse 'maybeFrom', as well as
 -- a potentially lossy normalization function 'onfrom'.
 --
@@ -57,7 +57,7 @@
 -- >
 -- > newtype Percent = Percent Double
 -- >
--- > instance NormalizesTo Double Percent where
+-- > instance IsSupersetOf Double Percent where
 -- >   to (Percent double) = double
 -- >   maybeFrom double =
 -- >     if double < 0 || double > 1
@@ -74,7 +74,7 @@
 -- Namely, while every @Percent@ value can be losslessly transformed into 'Double', not every 'Double' can be losslessly transformed into @Percent@.
 module LawfulConversions
   ( -- * Typeclasses
-    NormalizesTo (..),
+    IsSupersetOf (..),
     Is,
 
     -- * Combinators
@@ -83,8 +83,8 @@ module LawfulConversions
     onto,
 
     -- * Optics
-    normalizesToPrism,
-    normalizesToIso,
+    isSupersetOfPrism,
+    isSupersetOfIso,
     isIso,
 
     -- * Instance derivation

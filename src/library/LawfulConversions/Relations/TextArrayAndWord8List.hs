@@ -11,10 +11,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 
-instance NormalizesTo Data.Text.Array.Array [Word8] where
+instance IsSupersetOf Data.Text.Array.Array [Word8] where
   to = LawfulConversions.TextCompat.Array.fromShortByteString . Data.ByteString.Short.pack
 
-instance NormalizesTo [Word8] Data.Text.Array.Array where
+instance IsSupersetOf [Word8] Data.Text.Array.Array where
   to = Data.ByteString.Short.unpack . LawfulConversions.TextCompat.Array.toShortByteString
 
 instance Is Data.Text.Array.Array [Word8]

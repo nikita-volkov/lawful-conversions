@@ -7,10 +7,10 @@ import qualified Data.Vector
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo (Vector a) [a] where
+instance IsSupersetOf (Vector a) [a] where
   to = Data.Vector.fromList
 
-instance NormalizesTo [a] (Vector a) where
+instance IsSupersetOf [a] (Vector a) where
   to = Data.Vector.toList
 
 instance Is (Vector a) [a]

@@ -1,3 +1,3 @@
 module LawfulConversions.Proxies (module Exports) where
 
-import LawfulConversions.Proxies.ViaNormalizesTo as Exports
+import LawfulConversions.Proxies.ViaIsSupersetOf as Exports

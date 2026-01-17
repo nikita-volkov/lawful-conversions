@@ -90,7 +90,7 @@ library
     LawfulConversions.Prelude
     LawfulConversions.Properties
     LawfulConversions.Proxies
-    LawfulConversions.Proxies.ViaNormalizesTo
+    LawfulConversions.Proxies.ViaIsSupersetOf
     LawfulConversions.Relations
     LawfulConversions.Relations.Any
     LawfulConversions.Relations.BoxedVectorAndList

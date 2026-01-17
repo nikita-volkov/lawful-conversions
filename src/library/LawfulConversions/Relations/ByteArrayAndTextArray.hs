@@ -11,10 +11,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 
-instance NormalizesTo Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
+instance IsSupersetOf Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array where
   to = LawfulConversions.TextCompat.Array.toByteArray
 
-instance NormalizesTo Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
+instance IsSupersetOf Data.Text.Array.Array Data.Primitive.ByteArray.ByteArray where
   to = LawfulConversions.TextCompat.Array.fromByteArray
 
 instance Is Data.Primitive.ByteArray.ByteArray Data.Text.Array.Array

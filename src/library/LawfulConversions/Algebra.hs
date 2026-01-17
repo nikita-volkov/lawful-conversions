@@ -58,8 +58,8 @@ import LawfulConversions.Prelude
 --
 -- === Testing
 --
--- For testing whether your instances conform to these laws use 'LawfulConversions.normalizesToProperties'.
-class NormalizesTo a b where
+-- For testing whether your instances conform to these laws use 'LawfulConversions.isSupersetOfProperties'.
+class IsSupersetOf a b where
   -- |
   -- Convert a value of a subset type to a superset type.
   to :: b -> a
@@ -69,8 +69,8 @@ class NormalizesTo a b where
   maybeFrom :: a -> Maybe b
 
   -- |
-  -- Requires the presence of 'NormalizesTo' in reverse direction.
-  default maybeFrom :: (NormalizesTo b a) => a -> Maybe b
+  -- Requires the presence of 'IsSupersetOf' in reverse direction.
+  default maybeFrom :: (IsSupersetOf b a) => a -> Maybe b
   maybeFrom = Just . to
 
   -- |
@@ -80,15 +80,15 @@ class NormalizesTo a b where
   -- Particularly useful in combination with the @TypeApplications@ extension,
   -- where it allows to specify the input type, e.g.:
   --
-  -- > fromString :: NormalizesTo String b => String -> b
+  -- > fromString :: IsSupersetOf String b => String -> b
   -- > fromString = onfrom @String
   --
   -- If you want to specify the output type instead, use 'onto'.
   onfrom :: a -> b
 
   -- |
-  -- Requires the presence of 'NormalizesTo' in reverse direction.
-  default onfrom :: (NormalizesTo b a) => a -> b
+  -- Requires the presence of 'IsSupersetOf' in reverse direction.
+  default onfrom :: (IsSupersetOf b a) => a -> b
   onfrom = to
 
 -- |
@@ -99,7 +99,7 @@ class NormalizesTo a b where
 -- E.g.,
 --
 -- > fromText = from @Text
-from :: forall b a. (NormalizesTo a b) => b -> a
+from :: forall b a. (IsSupersetOf a b) => b -> a
 from = to
 
 -- |
@@ -114,7 +114,7 @@ from = to
 -- > maybeToInt16 = maybeTo @Int16
 --
 -- > percent = maybeTo @Percent someDouble
-maybeTo :: forall b a. (NormalizesTo a b) => a -> Maybe b
+maybeTo :: forall b a. (IsSupersetOf a b) => a -> Maybe b
 maybeTo = maybeFrom
 
 -- |
@@ -132,7 +132,7 @@ maybeTo = maybeFrom
 --   'from' @'Data.Text.Encoding.StrictTextBuilder' $
 --     "Height of " <> 'to' name <> " is " <> 'onto' (show height) <> " and email is " <> 'onto' email
 -- @
-onto :: forall b a. (NormalizesTo a b) => a -> b
+onto :: forall b a. (IsSupersetOf a b) => a -> b
 onto = onfrom
 
 -- | Bidirectional conversion between two types with no loss of information.
@@ -174,18 +174,18 @@ onto = onfrom
 -- === Instance Definition
 --
 -- For each pair of isomorphic types (/A/ and /B/) the compiler will require you to define four instances,
--- namely: @Is A B@ and @Is B A@, @NormalizesTo A B@ and @NormalizesTo B A@.
+-- namely: @Is A B@ and @Is B A@, @IsSupersetOf A B@ and @IsSupersetOf B A@.
 --
 -- Instances of @Is@ do not define any functions and serve merely as a statement that the laws are satisfied.
 --
 -- ==== Example: Lazy Text and Text
 --
 -- @
--- instance NormalizesTo "Data.Text.Lazy.LazyText" "Data.Text.Text" where
+-- instance IsSupersetOf "Data.Text.Lazy.LazyText" "Data.Text.Text" where
 --   to = LazyText.'Data.Text.Lazy.fromStrict'
 --   onfrom = LazyText.'Data.Text.Lazy.toStrict'
 --
--- instance NormalizesTo "Data.Text.Text" "Data.Text.Lazy.LazyText" where
+-- instance IsSupersetOf "Data.Text.Text" "Data.Text.Lazy.LazyText" where
 --   to = LazyText.'Data.Text.Lazy.toStrict'
 --   onfrom = LazyText.'Data.Text.Lazy.fromStrict'
 --
@@ -193,4 +193,4 @@ onto = onfrom
 --
 -- instance Is "Data.Text.Text" "Data.Text.Lazy.LazyText"
 -- @
-class (NormalizesTo a b, Is b a) => Is a b
+class (IsSupersetOf a b, Is b a) => Is a b

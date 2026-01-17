@@ -5,10 +5,10 @@ module LawfulConversions.Relations.IntAndWord where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo Int Word where
+instance IsSupersetOf Int Word where
   to = fromIntegral
 
-instance NormalizesTo Word Int where
+instance IsSupersetOf Word Int where
   to = fromIntegral
 
 instance Is Int Word

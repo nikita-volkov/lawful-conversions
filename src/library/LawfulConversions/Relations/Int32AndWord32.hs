@@ -5,10 +5,10 @@ module LawfulConversions.Relations.Int32AndWord32 where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance NormalizesTo Int32 Word32 where
+instance IsSupersetOf Int32 Word32 where
   to = fromIntegral
 
-instance NormalizesTo Word32 Int32 where
+instance IsSupersetOf Word32 Int32 where
   to = fromIntegral
 
 instance Is Int32 Word32

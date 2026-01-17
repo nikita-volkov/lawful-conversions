@@ -17,6 +17,7 @@
   - `Day` conversions (to/from `String`, `Text`, `LazyText`, and text builders)
   - `UtcTime` conversions (to/from `String`, `Text`, `LazyText`, and text builders)
   - `Uuid` conversions (to/from `String`, `Text`, `LazyText`, and text builders)
+- **Removed dependencies**: `time`, `uuid-types`, and `unordered-containers` are no longer dependencies of this library.
 
 ## Migration Guide
 

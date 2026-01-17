@@ -1,28 +1,25 @@
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-  workflow_call: 
+name: Build and Test
 
-concurrency:
-  group: format-and-test
-  cancel-in-progress: true
+on:
+  workflow_call:
+    inputs:
+      qc-max-success:
+        description: 'Maximum number of successful tests for QuickCheck'
+        required: false
+        type: number
+        default: 10000
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  format:
-    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/format.yaml@v4
-    secrets: inherit
-  
   check-cabal:
     uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/check-cabal.yaml@v4
     secrets: inherit
 
-  generate-docs:
-    uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/generate-docs.yaml@v4
-    secrets: inherit
-
-  build-ghc-8-8:
+  build-with-ghc-8-8:
     uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/build.yaml@v4
     secrets: inherit
     with:
@@ -30,8 +27,11 @@ jobs:
       skip-doctest: true
       skip-benchmarks: true
       test-options: >
-        --quickcheck-tests 10_000
+        --quickcheck-tests=${{ inputs.qc-max-success }}
 
-  build-latest:
+  build-with-latest:
     uses: nikita-volkov/haskell-hackage-lib-github-actions-workflows/.github/workflows/build.yaml@v4
     secrets: inherit
+    with:
+      test-options: >
+        --quickcheck-tests=${{ inputs.qc-max-success }}

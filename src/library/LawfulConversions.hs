@@ -12,10 +12,10 @@
 -- The types should be self-evident:
 --
 -- > > :t to @String
--- > to @String :: IsSome String b => b -> String
+-- > to @String :: IsSubsetOf String b => b -> String
 --
 -- > > :t from @Text
--- > from @Text :: IsSome a Text => Text -> a
+-- > from @Text :: IsSubsetOf a Text => Text -> a
 --
 -- In other words 'to' and 'from' let you explicitly specify either the source
 -- or the target type of a conversion when you need to help the type
@@ -32,7 +32,9 @@
 --
 -- = Partial conversions
 --
--- This library also captures the pattern of smart constructors via the 'IsSome' class, which associates a total 'to' conversion with its partial inverse 'maybeFrom'.
+-- This library also captures the pattern of smart constructors via the 'IsSubsetOf' class,
+-- which associates a total 'to' conversion with its partial inverse 'maybeFrom', as well as
+-- a potentially lossy normalization function 'onfrom'.
 --
 -- This captures the codec relationship between types.
 -- E.g.,
@@ -40,10 +42,6 @@
 -- - Every 'Int16' can be losslessly converted into 'Int32', but not every 'Int32' can be losslessly converted into 'Int16'.
 --
 -- - Every 'Text' can be converted into 'ByteString' via UTF-8 encoding, but not every 'ByteString' forms a valid UTF-8 sequence.
---
--- - Every URL can be uniquely represented as 'Text', but most 'Text's are not URLs unfortunately.
---
--- - UTCTime, JSON, Email, etc.
 --
 -- == Examples
 --
@@ -55,16 +53,12 @@
 -- >
 -- > newtype Percent = Percent Double
 -- >
--- > instance IsSome Double Percent where
+-- > instance IsSubsetOf Double Percent where
 -- >   to (Percent double) = double
 -- >   maybeFrom double =
 -- >     if double < 0 || double > 1
 -- >       then Nothing
 -- >       else Just (Percent double)
---
--- You can also expand upon that and provide a default handling of invalid values effectively providing a lossy canonicalizing conversion ([Surjection](https://en.wikipedia.org/wiki/Surjective_function)):
---
--- > instance IsMany Double Percent where
 -- >   onfrom double =
 -- >     if double < 0
 -- >       then Percent 0
@@ -72,12 +66,11 @@
 -- >         then Percent 1
 -- >         else Percent double
 --
--- However declaring an instance of 'Is' would be incorrect, because this conversion is partial.
--- Namely, while every @Percent@ value can be losslessly transformed into 'Double', not every 'Double' can be losslessly transformed into @Percent@.
+-- In this case declaring the inverse instance (@IsSubsetOf Percent Double@) would be impossible,
+-- as not every 'Double' can be converted into 'Percent' and thus the 'to' function would be partial.
 module LawfulConversions
   ( -- * Typeclasses
-    IsSome (..),
-    IsMany (..),
+    IsSubsetOf (..),
     Is,
 
     -- * Combinators
@@ -86,8 +79,8 @@ module LawfulConversions
     onto,
 
     -- * Optics
-    isSomePrism,
-    isManyIso,
+    isSubsetOfPrism,
+    isSubsetOfIso,
     isIso,
 
     -- * Instance derivation

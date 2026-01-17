@@ -7,15 +7,11 @@ import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome Data.ByteString.Builder.Builder [Word8] where
+instance IsSubsetOf Data.ByteString.Builder.Builder [Word8] where
   to = Data.ByteString.Builder.lazyByteString . Data.ByteString.Lazy.pack
 
-instance IsSome [Word8] Data.ByteString.Builder.Builder where
+instance IsSubsetOf [Word8] Data.ByteString.Builder.Builder where
   to = Data.ByteString.Lazy.unpack . Data.ByteString.Builder.toLazyByteString
-
-instance IsMany Data.ByteString.Builder.Builder [Word8]
-
-instance IsMany [Word8] Data.ByteString.Builder.Builder
 
 instance Is Data.ByteString.Builder.Builder [Word8]
 

@@ -5,15 +5,11 @@ module LawfulConversions.Relations.Int8AndWord8 where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome Int8 Word8 where
+instance IsSubsetOf Int8 Word8 where
   to = fromIntegral
 
-instance IsSome Word8 Int8 where
+instance IsSubsetOf Word8 Int8 where
   to = fromIntegral
-
-instance IsMany Int8 Word8
-
-instance IsMany Word8 Int8
 
 instance Is Int8 Word8
 

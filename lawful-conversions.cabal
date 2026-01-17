@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.3.0.3
+version: 0.4.0.0
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -16,13 +16,11 @@ extra-source-files:
 description:
   = Summary
 
-  Lawful typeclasses capturing three patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
+  Lawful typeclasses capturing two patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
 
-  1. Smart constructor
+  1. Smart constructor with canonicalization (subset inclusion with lossy normalization)
 
-  2. Canonicalization or lossy conversion
-
-  3. Isomorphism or lossless conversion
+  2. Isomorphism or lossless conversion
 
   = The conversion problem
 
@@ -90,7 +88,7 @@ library
     LawfulConversions.Prelude
     LawfulConversions.Properties
     LawfulConversions.Proxies
-    LawfulConversions.Proxies.ViaIsSome
+    LawfulConversions.Proxies.ViaIsSubsetOf
     LawfulConversions.Relations
     LawfulConversions.Relations.Any
     LawfulConversions.Relations.BoxedVectorAndList
@@ -109,11 +107,6 @@ library
     LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
-    LawfulConversions.Relations.DayAndLazyText
-    LawfulConversions.Relations.DayAndLazyTextBuilder
-    LawfulConversions.Relations.DayAndStrictTextBuilder
-    LawfulConversions.Relations.DayAndString
-    LawfulConversions.Relations.DayAndText
     LawfulConversions.Relations.Int16AndWord16
     LawfulConversions.Relations.Int32AndWord32
     LawfulConversions.Relations.Int64AndWord64
@@ -135,27 +128,16 @@ library
     LawfulConversions.Relations.LazyTextAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextAndString
     LawfulConversions.Relations.LazyTextAndText
-    LawfulConversions.Relations.LazyTextAndUtcTime
-    LawfulConversions.Relations.LazyTextAndUuid
     LawfulConversions.Relations.LazyTextBuilderAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextBuilderAndString
     LawfulConversions.Relations.LazyTextBuilderAndText
-    LawfulConversions.Relations.LazyTextBuilderAndUtcTime
-    LawfulConversions.Relations.LazyTextBuilderAndUuid
     LawfulConversions.Relations.ListAndSeq
     LawfulConversions.Relations.ShortByteStringAndTextArray
     LawfulConversions.Relations.ShortByteStringAndWord8List
     LawfulConversions.Relations.StrictTextBuilderAndString
     LawfulConversions.Relations.StrictTextBuilderAndText
-    LawfulConversions.Relations.StrictTextBuilderAndUtcTime
-    LawfulConversions.Relations.StrictTextBuilderAndUuid
     LawfulConversions.Relations.StringAndText
-    LawfulConversions.Relations.StringAndUtcTime
-    LawfulConversions.Relations.StringAndUuid
-    LawfulConversions.Relations.TextAndUtcTime
-    LawfulConversions.Relations.TextAndUuid
     LawfulConversions.Relations.TextArrayAndWord8List
-    LawfulConversions.Relations.Void
     LawfulConversions.TextCompat.Array
 
   build-depends:
@@ -167,9 +149,6 @@ library
     primitive >=0.7 && <0.10,
     profunctors >=5 && <6,
     text >=1.2 && <2.2,
-    time >=1.9 && <2,
-    unordered-containers >=0.2 && <0.3,
-    uuid-types >=1.0 && <1.1,
     vector >=0.12 && <0.14,
 
 test-suite test

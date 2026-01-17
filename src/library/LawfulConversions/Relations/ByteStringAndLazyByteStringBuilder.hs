@@ -2,20 +2,17 @@
 
 module LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome ByteString Data.ByteString.Builder.Builder where
+instance IsSubsetOf ByteString Data.ByteString.Builder.Builder where
   to = Data.ByteString.Lazy.toStrict . Data.ByteString.Builder.toLazyByteString
 
-instance IsSome Data.ByteString.Builder.Builder ByteString where
+instance IsSubsetOf Data.ByteString.Builder.Builder ByteString where
   to = Data.ByteString.Builder.byteString
-
-instance IsMany Data.ByteString.Builder.Builder ByteString
-
-instance IsMany ByteString Data.ByteString.Builder.Builder
 
 instance Is Data.ByteString.Builder.Builder ByteString
 

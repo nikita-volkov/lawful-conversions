@@ -2,19 +2,15 @@
 
 module LawfulConversions.Relations.ByteStringAndShortByteString where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString.Short
 import LawfulConversions.Algebra
-import LawfulConversions.Prelude
 
-instance IsSome ByteString Data.ByteString.Short.ShortByteString where
+instance IsSubsetOf ByteString Data.ByteString.Short.ShortByteString where
   to = Data.ByteString.Short.fromShort
 
-instance IsSome Data.ByteString.Short.ShortByteString ByteString where
+instance IsSubsetOf Data.ByteString.Short.ShortByteString ByteString where
   to = Data.ByteString.Short.toShort
-
-instance IsMany ByteString Data.ByteString.Short.ShortByteString
-
-instance IsMany Data.ByteString.Short.ShortByteString ByteString
 
 instance Is ByteString Data.ByteString.Short.ShortByteString
 

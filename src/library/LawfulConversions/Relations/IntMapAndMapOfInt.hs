@@ -2,20 +2,18 @@
 
 module LawfulConversions.Relations.IntMapAndMapOfInt where
 
+import Data.IntMap.Strict (IntMap)
 import qualified Data.IntMap.Strict
+import Data.Map.Strict (Map)
 import qualified Data.Map.Strict
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome (Map Int v) (IntMap v) where
+instance IsSubsetOf (Map Int v) (IntMap v) where
   to = Data.Map.Strict.fromList . Data.IntMap.Strict.toList
 
-instance IsSome (IntMap v) (Map Int v) where
+instance IsSubsetOf (IntMap v) (Map Int v) where
   to = Data.IntMap.Strict.fromList . Data.Map.Strict.toList
-
-instance IsMany (Map Int v) (IntMap v)
-
-instance IsMany (IntMap v) (Map Int v)
 
 instance Is (Map Int v) (IntMap v)
 

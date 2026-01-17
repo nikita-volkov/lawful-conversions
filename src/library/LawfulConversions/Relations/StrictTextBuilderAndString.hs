@@ -10,11 +10,9 @@ import LawfulConversions.Algebra
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Prelude
 
-instance IsSome String Data.Text.Encoding.StrictTextBuilder where
+instance IsSubsetOf String Data.Text.Encoding.StrictTextBuilder where
   to = to . Data.Text.Encoding.strictBuilderToText
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
-
-instance IsMany String Data.Text.Encoding.StrictTextBuilder where
   onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom
 
 #elif MIN_VERSION_text(2,0,2)
@@ -24,11 +22,9 @@ import LawfulConversions.Algebra
 import LawfulConversions.Relations.StringAndText ()
 import LawfulConversions.Prelude
 
-instance IsSome String Data.Text.Encoding.StrictBuilder where
+instance IsSubsetOf String Data.Text.Encoding.StrictBuilder where
   to = to . Data.Text.Encoding.strictBuilderToText
   maybeFrom = fmap Data.Text.Encoding.textToStrictBuilder . maybeFrom
-
-instance IsMany String Data.Text.Encoding.StrictBuilder where
   onfrom =  Data.Text.Encoding.textToStrictBuilder . onfrom
 
 #endif

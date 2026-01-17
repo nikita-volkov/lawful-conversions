@@ -2,19 +2,16 @@
 
 module LawfulConversions.Relations.ByteStringAndWord8List where
 
+import Data.ByteString (ByteString)
 import qualified Data.ByteString
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSome ByteString [Word8] where
+instance IsSubsetOf ByteString [Word8] where
   to = Data.ByteString.pack
 
-instance IsSome [Word8] ByteString where
+instance IsSubsetOf [Word8] ByteString where
   to = Data.ByteString.unpack
-
-instance IsMany ByteString [Word8]
-
-instance IsMany [Word8] ByteString
 
 instance Is ByteString [Word8]
 

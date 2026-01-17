@@ -1,6 +1,5 @@
 module LawfulConversions.Properties
-  ( isSomeProperties,
-    isManyProperties,
+  ( isSubsetOfProperties,
     isProperties,
   )
 where
@@ -10,24 +9,24 @@ import LawfulConversions.Prelude
 import Test.QuickCheck
 
 -- |
--- Properties testing whether an instance satisfies the laws of 'IsSome'.
+-- Properties testing whether an instance satisfies the laws of 'IsSubsetOf'.
 --
 -- The instance is identified via the proxy types that you provide.
 --
 -- E.g., here's how you can integrate it into an Hspec test-suite:
 --
 -- > spec = do
--- >   describe "IsSome laws" do
+-- >   describe "IsSubsetOf laws" do
 -- >     traverse_
 -- >       (uncurry prop)
--- >       (isSomeProperties @Int32 @Int16 Proxy Proxy)
-isSomeProperties ::
+-- >       (isSubsetOfProperties @Int32 @Int16 Proxy Proxy)
+isSubsetOfProperties ::
   forall a b.
-  (IsSome a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
+  (IsSubsetOf a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
-isSomeProperties aProxy bProxy =
+isSubsetOfProperties aProxy bProxy =
   [ ( "'to' is injective",
       property \b1 b2 ->
         b1 /= b2 ==>
@@ -42,32 +41,8 @@ isSomeProperties aProxy bProxy =
         case maybeFrom' a of
           Just b -> to' b === a
           Nothing -> property True
-    )
-  ]
-  where
-    to' = as aProxy . to . as bProxy
-    maybeFrom' = fmap (as bProxy) . maybeFrom . as aProxy
-
--- |
--- Properties testing whether an instance satisfies the laws of 'IsMany'.
---
--- The instance is identified via the proxy types that you provide.
---
--- E.g., here's how you can integrate it into an Hspec test-suite:
---
--- > spec = do
--- >   describe "IsMany laws" do
--- >     traverse_
--- >       (uncurry prop)
--- >       (isManyProperties @String @Text Proxy Proxy)
-isManyProperties ::
-  forall a b.
-  (IsMany a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
-  Proxy a ->
-  Proxy b ->
-  [(String, Property)]
-isManyProperties aProxy bProxy =
-  [ ( "'onfrom' is an inverse of 'to'",
+    ),
+    ( "'onfrom' is an inverse of 'to'",
       property \b -> b === onfrom' (to' b)
     ),
     ( "'onfrom' is consistent with 'maybeFrom'",
@@ -81,9 +56,9 @@ isManyProperties aProxy bProxy =
          in maybeFrom (to' b) === Just b
     )
   ]
-    <> isSomeProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
+    maybeFrom' = fmap (as bProxy) . maybeFrom . as aProxy
     onfrom' = as bProxy . onfrom . as aProxy
 
 -- |
@@ -111,7 +86,7 @@ isProperties aProxy bProxy =
       property \a -> from' a === onfrom' a
     )
   ]
-    <> isManyProperties aProxy bProxy
+    <> isSubsetOfProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
     from' = as bProxy . from . as aProxy

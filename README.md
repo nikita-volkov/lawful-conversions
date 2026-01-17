@@ -7,11 +7,10 @@ A Haskell library providing **lawful typeclasses for bidirectional type conversi
 
 ## Core Concept
 
-This library defines a precise hierarchy of three conversion patterns with increasing mathematical strictness:
+This library defines a precise hierarchy of two conversion patterns with increasing mathematical strictness:
 
-1. **Smart Constructor** (`IsSome`) - Subset embedding with partial inverse
-2. **Canonicalization** (`IsMany`) - Many-to-one lossy conversion  
-3. **Isomorphism** (`Is`) - Bidirectional lossless conversion
+1. **Smart Constructor / Canonicalization** (`IsSubsetOf`) - Bidirectional conversion with subset embedding, partial inverse, and lossy canonicalization
+2. **Isomorphism** (`Is`) - Bidirectional lossless conversion
 
 Each typeclass comes with **mathematical laws** and **property-based tests** to ensure correctness and consistency across all instances.
 
@@ -74,21 +73,27 @@ badPercent = maybeFrom @Double 1.5     -- Nothing (out of range)
 
 ## Typeclass Hierarchy
 
-### `IsSome a b` - Smart Constructor Pattern
-Evidence that type `b` is a **subset** of type `a`:
-- `to :: b -> a` (total injection)
-- `maybeFrom :: a -> Maybe b` (partial inverse)
-- **Law**: Injectivity and partial inverse relationship
+### `IsSubsetOf a b` - Smart Constructor & Canonicalization Pattern
+Evidence that type `b` normalizes to type `a`, capturing:
+- **Subset inclusion**: Type `b` is a subset of type `a`
+- **Canonicalization**: Type `a` can be normalized to type `b` (possibly lossy)
 
-### `IsMany a b` - Canonicalization Pattern  
-Evidence that type `a` can be **canonicalized** to type `b`:
-- `onfrom :: a -> b` (total surjection)
-- **Law**: Consistent with subset relationships
+Provides three core functions:
+- `to :: b -> a` (total injection from subset to superset)
+- `maybeFrom :: a -> Maybe b` (partial inverse, recognizing subset values)
+- `onfrom :: a -> b` (total surjection, lossy canonicalization)
+
+**Laws**: 
+- Injectivity of `to`
+- Partial inverse relationship between `to` and `maybeFrom`
+- `onfrom` is an inverse of `to`
+- `onfrom` is surjective
+- Consistency between `onfrom` and `maybeFrom`
 
 ### `Is a b` - Isomorphism Pattern
 Evidence that types `a` and `b` are **isomorphic**:
-- Combines both `IsSome` and `IsMany`
-- **Law**: `to` and `from` are total inverses
+- Inherits all capabilities of `IsSubsetOf`
+- **Additional Law**: `to` and `from` (aka `onfrom`) are total inverses
 
 ## Supported Type Conversions
 

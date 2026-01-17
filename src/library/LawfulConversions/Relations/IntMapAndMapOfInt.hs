@@ -9,10 +9,10 @@ import qualified Data.Map.Strict
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSupersetOf (Map Int v) (IntMap v) where
+instance IsSubsetOf (Map Int v) (IntMap v) where
   to = Data.Map.Strict.fromList . Data.IntMap.Strict.toList
 
-instance IsSupersetOf (IntMap v) (Map Int v) where
+instance IsSubsetOf (IntMap v) (Map Int v) where
   to = Data.IntMap.Strict.fromList . Data.Map.Strict.toList
 
 instance Is (Map Int v) (IntMap v)

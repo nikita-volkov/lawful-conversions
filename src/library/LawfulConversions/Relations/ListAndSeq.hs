@@ -7,10 +7,10 @@ import qualified Data.Sequence
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSupersetOf [a] (Seq a) where
+instance IsSubsetOf [a] (Seq a) where
   to = toList
 
-instance IsSupersetOf (Seq a) [a] where
+instance IsSubsetOf (Seq a) [a] where
   to = Data.Sequence.fromList
 
 instance Is [a] (Seq a)

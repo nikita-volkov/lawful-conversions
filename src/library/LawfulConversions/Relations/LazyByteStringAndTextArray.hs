@@ -12,13 +12,13 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 
-instance IsSupersetOf Data.ByteString.Lazy.ByteString Data.Text.Array.Array where
+instance IsSubsetOf Data.ByteString.Lazy.ByteString Data.Text.Array.Array where
   to =
     Data.ByteString.Lazy.fromStrict
       . Data.ByteString.Short.fromShort
       . LawfulConversions.TextCompat.Array.toShortByteString
 
-instance IsSupersetOf Data.Text.Array.Array Data.ByteString.Lazy.ByteString where
+instance IsSubsetOf Data.Text.Array.Array Data.ByteString.Lazy.ByteString where
   to =
     LawfulConversions.TextCompat.Array.fromShortByteString
       . Data.ByteString.Short.toShort

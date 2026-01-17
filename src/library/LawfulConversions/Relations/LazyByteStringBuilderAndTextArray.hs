@@ -13,10 +13,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import qualified LawfulConversions.TextCompat.Array
 
-instance IsSupersetOf Data.ByteString.Builder.Builder Data.Text.Array.Array where
+instance IsSubsetOf Data.ByteString.Builder.Builder Data.Text.Array.Array where
   to = Data.ByteString.Builder.shortByteString . LawfulConversions.TextCompat.Array.toShortByteString
 
-instance IsSupersetOf Data.Text.Array.Array Data.ByteString.Builder.Builder where
+instance IsSubsetOf Data.Text.Array.Array Data.ByteString.Builder.Builder where
   to =
     LawfulConversions.TextCompat.Array.fromShortByteString
       . Data.ByteString.Short.toShort

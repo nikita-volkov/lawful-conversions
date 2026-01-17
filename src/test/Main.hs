@@ -126,9 +126,9 @@ testIs superp subp =
           show (typeOf (asProxyTypeOf undefined subp))
         ]
 
-testIsSupersetOf :: (IsSupersetOf a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree
-testIsSupersetOf superp subp =
-  isSupersetOfProperties superp subp
+testIsSubsetOf :: (IsSubsetOf a b, Eq a, Eq b, Arbitrary a, Show a, Arbitrary b, Show b, Typeable a, Typeable b) => Proxy a -> Proxy b -> TestTree
+testIsSubsetOf superp subp =
+  isSubsetOfProperties superp subp
     & fmap (uncurry testProperty)
     & testGroup groupName
   where

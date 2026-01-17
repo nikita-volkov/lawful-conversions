@@ -7,10 +7,10 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 import LawfulConversions.Relations.ByteArrayAndShortByteString ()
 
-instance IsSupersetOf Data.Primitive.ByteArray.ByteArray [Word8] where
+instance IsSubsetOf Data.Primitive.ByteArray.ByteArray [Word8] where
   to = fromList
 
-instance IsSupersetOf [Word8] Data.Primitive.ByteArray.ByteArray where
+instance IsSubsetOf [Word8] Data.Primitive.ByteArray.ByteArray where
   to = toList
 
 instance Is Data.Primitive.ByteArray.ByteArray [Word8]

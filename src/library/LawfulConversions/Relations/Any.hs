@@ -6,7 +6,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | Any type is isomorphic to itself.
-instance IsSupersetOf a a where
+instance IsSubsetOf a a where
   to = id
   maybeFrom = Just . id
 

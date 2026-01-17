@@ -10,11 +10,11 @@ import LawfulConversions.Prelude
 import LawfulConversions.Relations.ByteArrayAndShortByteString ()
 import LawfulConversions.Relations.ByteStringAndShortByteString ()
 
-instance IsSupersetOf Data.Primitive.ByteArray.ByteArray ByteString where
+instance IsSubsetOf Data.Primitive.ByteArray.ByteArray ByteString where
   to = to @Data.Primitive.ByteArray.ByteArray . to @Data.ByteString.Short.ShortByteString
   onfrom = to @ByteString . to @Data.ByteString.Short.ShortByteString
 
-instance IsSupersetOf ByteString Data.Primitive.ByteArray.ByteArray where
+instance IsSubsetOf ByteString Data.Primitive.ByteArray.ByteArray where
   to = to @ByteString . to @Data.ByteString.Short.ShortByteString
   onfrom = to @Data.Primitive.ByteArray.ByteArray . to @Data.ByteString.Short.ShortByteString
 

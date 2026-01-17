@@ -5,10 +5,10 @@ module LawfulConversions.Relations.IntAndWord where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSupersetOf Int Word where
+instance IsSubsetOf Int Word where
   to = fromIntegral
 
-instance IsSupersetOf Word Int where
+instance IsSubsetOf Word Int where
   to = fromIntegral
 
 instance Is Int Word

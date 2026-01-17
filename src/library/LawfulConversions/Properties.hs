@@ -1,5 +1,5 @@
 module LawfulConversions.Properties
-  ( isSupersetOfProperties,
+  ( isSubsetOfProperties,
     isProperties,
   )
 where
@@ -9,24 +9,24 @@ import LawfulConversions.Prelude
 import Test.QuickCheck
 
 -- |
--- Properties testing whether an instance satisfies the laws of 'IsSupersetOf'.
+-- Properties testing whether an instance satisfies the laws of 'IsSubsetOf'.
 --
 -- The instance is identified via the proxy types that you provide.
 --
 -- E.g., here's how you can integrate it into an Hspec test-suite:
 --
 -- > spec = do
--- >   describe "IsSupersetOf laws" do
+-- >   describe "IsSubsetOf laws" do
 -- >     traverse_
 -- >       (uncurry prop)
--- >       (isSupersetOfProperties @Int32 @Int16 Proxy Proxy)
-isSupersetOfProperties ::
+-- >       (isSubsetOfProperties @Int32 @Int16 Proxy Proxy)
+isSubsetOfProperties ::
   forall a b.
-  (IsSupersetOf a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
+  (IsSubsetOf a b, Eq a, Eq b, Show a, Show b, Arbitrary a, Arbitrary b) =>
   Proxy a ->
   Proxy b ->
   [(String, Property)]
-isSupersetOfProperties aProxy bProxy =
+isSubsetOfProperties aProxy bProxy =
   [ ( "'to' is injective",
       property \b1 b2 ->
         b1 /= b2 ==>
@@ -86,7 +86,7 @@ isProperties aProxy bProxy =
       property \a -> from' a === onfrom' a
     )
   ]
-    <> isSupersetOfProperties aProxy bProxy
+    <> isSubsetOfProperties aProxy bProxy
   where
     to' = as aProxy . to . as bProxy
     from' = as bProxy . from . as aProxy

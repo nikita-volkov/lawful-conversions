@@ -6,10 +6,10 @@ import qualified Data.ByteString.Builder
 import qualified Data.ByteString.Lazy
 import LawfulConversions.Algebra
 
-instance IsSupersetOf Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder where
+instance IsSubsetOf Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder where
   to = Data.ByteString.Builder.toLazyByteString
 
-instance IsSupersetOf Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString where
+instance IsSubsetOf Data.ByteString.Builder.Builder Data.ByteString.Lazy.ByteString where
   to = Data.ByteString.Builder.lazyByteString
 
 instance Is Data.ByteString.Lazy.ByteString Data.ByteString.Builder.Builder

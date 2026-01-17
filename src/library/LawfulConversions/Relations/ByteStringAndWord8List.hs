@@ -7,10 +7,10 @@ import qualified Data.ByteString
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSupersetOf ByteString [Word8] where
+instance IsSubsetOf ByteString [Word8] where
   to = Data.ByteString.pack
 
-instance IsSupersetOf [Word8] ByteString where
+instance IsSubsetOf [Word8] ByteString where
   to = Data.ByteString.unpack
 
 instance Is ByteString [Word8]

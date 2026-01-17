@@ -5,10 +5,10 @@ module LawfulConversions.Relations.Int64AndWord64 where
 import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
-instance IsSupersetOf Int64 Word64 where
+instance IsSubsetOf Int64 Word64 where
   to = fromIntegral
 
-instance IsSupersetOf Word64 Int64 where
+instance IsSubsetOf Word64 Int64 where
   to = fromIntegral
 
 instance Is Int64 Word64

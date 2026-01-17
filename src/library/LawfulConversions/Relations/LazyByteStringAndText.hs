@@ -11,7 +11,7 @@ import LawfulConversions.Algebra
 import LawfulConversions.Prelude
 
 -- | UTF-8 codec.
-instance IsSupersetOf Data.ByteString.Lazy.ByteString Data.Text.Text where
+instance IsSubsetOf Data.ByteString.Lazy.ByteString Data.Text.Text where
   to = Data.Text.Lazy.Encoding.encodeUtf8 . Data.Text.Lazy.fromStrict
   maybeFrom = either (const Nothing) (Just . Data.Text.Lazy.toStrict) . Data.Text.Lazy.Encoding.decodeUtf8'
   onfrom = Data.Text.Lazy.toStrict . Data.Text.Lazy.Encoding.decodeUtf8With Data.Text.Encoding.Error.lenientDecode

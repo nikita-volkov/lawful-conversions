@@ -6,10 +6,10 @@ import Data.ByteString (ByteString)
 import qualified Data.ByteString.Short
 import LawfulConversions.Algebra
 
-instance IsSupersetOf ByteString Data.ByteString.Short.ShortByteString where
+instance IsSubsetOf ByteString Data.ByteString.Short.ShortByteString where
   to = Data.ByteString.Short.fromShort
 
-instance IsSupersetOf Data.ByteString.Short.ShortByteString ByteString where
+instance IsSubsetOf Data.ByteString.Short.ShortByteString ByteString where
   to = Data.ByteString.Short.toShort
 
 instance Is ByteString Data.ByteString.Short.ShortByteString

@@ -6,10 +6,10 @@ import Data.Vector (Vector)
 import qualified Data.Vector
 import LawfulConversions.Algebra
 
-instance IsSupersetOf (Vector a) [a] where
+instance IsSubsetOf (Vector a) [a] where
   to = Data.Vector.fromList
 
-instance IsSupersetOf [a] (Vector a) where
+instance IsSubsetOf [a] (Vector a) where
   to = Data.Vector.toList
 
 instance Is (Vector a) [a]

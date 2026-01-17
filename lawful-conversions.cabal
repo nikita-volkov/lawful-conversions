@@ -1,6 +1,6 @@
 cabal-version: 3.0
 name: lawful-conversions
-version: 0.3.0.3
+version: 0.4.0.0
 synopsis: Lawful typeclasses for bidirectional conversion between types
 category: Conversion
 homepage: https://github.com/nikita-volkov/lawful-conversions
@@ -16,13 +16,11 @@ extra-source-files:
 description:
   = Summary
 
-  Lawful typeclasses capturing three patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
+  Lawful typeclasses capturing two patterns of bidirectional mapping and forming a layered hierarchy with an ascending strictness of laws.
 
-  1. Smart constructor
+  1. Smart constructor with canonicalization (subset inclusion with lossy normalization)
 
-  2. Canonicalization or lossy conversion
-
-  3. Isomorphism or lossless conversion
+  2. Isomorphism or lossless conversion
 
   = The conversion problem
 

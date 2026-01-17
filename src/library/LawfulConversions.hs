@@ -43,10 +43,6 @@
 --
 -- - Every 'Text' can be converted into 'ByteString' via UTF-8 encoding, but not every 'ByteString' forms a valid UTF-8 sequence.
 --
--- - Every URL can be uniquely represented as 'Text', but most 'Text's are not URLs unfortunately.
---
--- - UTCTime, JSON, Email, etc.
---
 -- == Examples
 --
 -- Here's an example of implementing the Smart Constructor pattern.
@@ -70,8 +66,8 @@
 -- >         then Percent 1
 -- >         else Percent double
 --
--- However declaring an instance of 'Is' would be incorrect, because this conversion is partial.
--- Namely, while every @Percent@ value can be losslessly transformed into 'Double', not every 'Double' can be losslessly transformed into @Percent@.
+-- In this case declaring the inverse instance (@IsSubsetOf Percent Double@) would be impossible,
+-- as not every 'Double' can be converted into 'Percent' and thus the 'to' function would be partial.
 module LawfulConversions
   ( -- * Typeclasses
     IsSubsetOf (..),

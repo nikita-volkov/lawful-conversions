@@ -30,8 +30,9 @@ isSomeProperties ::
 isSomeProperties aProxy bProxy =
   [ ( "'to' is injective",
       property \b1 b2 ->
-        b1 /= b2 ==>
-          to' b1 =/= to' b2
+        if b1 == b2
+          then property True
+          else to' b1 =/= to' b2
     ),
     ( "'maybeFrom' is a partial inverse of 'to'",
       property \b ->

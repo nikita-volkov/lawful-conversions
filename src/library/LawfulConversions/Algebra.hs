@@ -79,6 +79,21 @@ maybeTo :: forall b a. (IsSome a b) => a -> Maybe b
 maybeTo = maybeFrom
 
 -- |
+-- Like 'maybeFrom', but returns an 'Either' with the provided error on failure.
+--
+-- Useful for raising custom errors when conversion fails.
+tryFrom :: (IsSome a b) => e -> a -> Either e b
+tryFrom err a =
+  case maybeFrom a of
+    Just b -> Right b
+    Nothing -> Left err
+
+-- |
+-- Alias to 'tryFrom', which lets you specify the target type of the conversion first using @TypeApplications@.
+tryTo :: forall b a e. (IsSome a b) => e -> a -> Either e b
+tryTo = tryFrom
+
+-- |
 -- Lossy or canonicalizing conversion.
 -- Captures mappings from multiple alternative inputs into one output.
 --

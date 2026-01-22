@@ -83,6 +83,8 @@ module LawfulConversions
     -- * Combinators
     from,
     maybeTo,
+    tryFrom,
+    tryTo,
     onto,
 
     -- * Optics

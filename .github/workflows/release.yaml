@@ -57,7 +57,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set package version
         uses: nikita-volkov/edit-cabal-version.github-action@v1.1.1

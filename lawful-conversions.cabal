@@ -103,17 +103,9 @@ library
     LawfulConversions.Relations.ByteArrayAndWord8List
     LawfulConversions.Relations.ByteStringAndLazyByteString
     LawfulConversions.Relations.ByteStringAndLazyByteStringBuilder
-    LawfulConversions.Relations.ByteStringAndLazyText
     LawfulConversions.Relations.ByteStringAndShortByteString
-    LawfulConversions.Relations.ByteStringAndString
-    LawfulConversions.Relations.ByteStringAndText
     LawfulConversions.Relations.ByteStringAndTextArray
     LawfulConversions.Relations.ByteStringAndWord8List
-    LawfulConversions.Relations.DayAndLazyText
-    LawfulConversions.Relations.DayAndLazyTextBuilder
-    LawfulConversions.Relations.DayAndStrictTextBuilder
-    LawfulConversions.Relations.DayAndString
-    LawfulConversions.Relations.DayAndText
     LawfulConversions.Relations.Int16AndWord16
     LawfulConversions.Relations.Int32AndWord32
     LawfulConversions.Relations.Int64AndWord64
@@ -122,10 +114,7 @@ library
     LawfulConversions.Relations.IntMapAndMapOfInt
     LawfulConversions.Relations.IntSetAndSetOfInt
     LawfulConversions.Relations.LazyByteStringAndLazyByteStringBuilder
-    LawfulConversions.Relations.LazyByteStringAndLazyText
     LawfulConversions.Relations.LazyByteStringAndShortByteString
-    LawfulConversions.Relations.LazyByteStringAndString
-    LawfulConversions.Relations.LazyByteStringAndText
     LawfulConversions.Relations.LazyByteStringAndTextArray
     LawfulConversions.Relations.LazyByteStringAndWord8List
     LawfulConversions.Relations.LazyByteStringBuilderAndShortByteString
@@ -135,25 +124,15 @@ library
     LawfulConversions.Relations.LazyTextAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextAndString
     LawfulConversions.Relations.LazyTextAndText
-    LawfulConversions.Relations.LazyTextAndUtcTime
-    LawfulConversions.Relations.LazyTextAndUuid
     LawfulConversions.Relations.LazyTextBuilderAndStrictTextBuilder
     LawfulConversions.Relations.LazyTextBuilderAndString
     LawfulConversions.Relations.LazyTextBuilderAndText
-    LawfulConversions.Relations.LazyTextBuilderAndUtcTime
-    LawfulConversions.Relations.LazyTextBuilderAndUuid
     LawfulConversions.Relations.ListAndSeq
     LawfulConversions.Relations.ShortByteStringAndTextArray
     LawfulConversions.Relations.ShortByteStringAndWord8List
     LawfulConversions.Relations.StrictTextBuilderAndString
     LawfulConversions.Relations.StrictTextBuilderAndText
-    LawfulConversions.Relations.StrictTextBuilderAndUtcTime
-    LawfulConversions.Relations.StrictTextBuilderAndUuid
     LawfulConversions.Relations.StringAndText
-    LawfulConversions.Relations.StringAndUtcTime
-    LawfulConversions.Relations.StringAndUuid
-    LawfulConversions.Relations.TextAndUtcTime
-    LawfulConversions.Relations.TextAndUuid
     LawfulConversions.Relations.TextArrayAndWord8List
     LawfulConversions.Relations.Void
     LawfulConversions.TextCompat.Array
@@ -167,9 +146,7 @@ library
     primitive >=0.7 && <0.10,
     profunctors >=5 && <6,
     text >=1.2 && <2.2,
-    time >=1.9 && <2,
     unordered-containers >=0.2 && <0.3,
-    uuid-types >=1.0 && <1.1,
     vector >=0.12 && <0.14,
 
 test-suite test
